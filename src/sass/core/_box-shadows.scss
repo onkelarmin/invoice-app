@@ -4,19 +4,17 @@ $box-shadow-colors: (
     light: "transparent",
     dark: "transparent",
   ),
-  mobile-nav-menu: (
-    light: "neutral-600" 0.16,
-    dark: "neutral-600" 0.16,
+  default: (
+    light: "neutral-500" 0.1,
+    dark: "neutral-500" 0.1,
   ),
 );
 
 $box-shadows-offsets: (
   none: 0px 0px 0px 0px,
-  mobile-nav-menu: 0px 12px 22px -12px,
+  default: 0px 10px 10px -10px,
 );
 
 $box-shadows: (
-  mobile-nav-menu: (
-    var(--box-shadow-mobile-nav-menu),
-  ),
+  default: (var(--box-shadow-default)),
 );

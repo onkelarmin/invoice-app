@@ -21,7 +21,7 @@ body {
 ) {
   border-radius: var(--br-default-focus);
   outline: var(--border-none);
-  outline-offset: calc(var(--offset-default-focus) * -1);
+  outline-offset: calc(var(--default-focus-offset) * -1);
   transition:
     outline-color var(--trans-fast-in),
     outline-offset var(--trans-fast-out-sensitive);
@@ -31,7 +31,7 @@ body {
   }
   &:focus-visible {
     outline: var(--border-default-focus);
-    outline-offset: var(--offset-default-focus);
+    outline-offset: var(--default-focus-offset);
   }
 }
 

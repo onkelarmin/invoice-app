@@ -1,30 +1,33 @@
 @use "helper" as *;
 @use "page" as *;
 
-// Page padding
-$padding-page: (
-  inline-start: rem(16px),
-  inline-end: rem(16px),
-  block-start: rem(16px),
-  block-end: rem(16px),
+$base-spacing: (
+  xs: rem(4px),
+  sm: rem(8px),
+  md: rem(12px),
+  lg: rem(16px),
+  xl: fluid(20px, 24px),
+  2xl: fluid(24px, 32px),
+  3xl: fluid(32px, 40px),
+  4xl: fluid(40px, 56px),
+  5xl: fluid(56px, 72px),
+  6xl: fluid(72px, 96px),
 );
 
-// Section padding
-$padding-section: (
-  md: rem(16px),
+$base-layout: (
+  sm: fluid(16px, 24px),
+  md: fluid(24px, 40px),
+  lg: fluid(32px, 56px),
+  xl: fluid(48px, 80px),
 );
 
-// Container padding
-$padding-container: (
-  md: rem(16px),
+$wrapper-padding: (
+  start: bp(24px, 48px, 48px),
+  end: bp(24px, 48px, 48px),
 );
 
-// Container spacing
-$spacer-container: (
-  md: rem(16px),
-);
-
-// Offset
-$offset: (
-  default-focus: rem(3px),
+$component-spacing: (
+  default-focus: (
+    offset: rem(3px),
+  ),
 );

@@ -44,9 +44,9 @@
     --size-logo-#{$size}: #{$value};
   }
 
-  // SVG
-  @each $size, $value in $svg-sizes {
-    --size-svg-#{$size}: #{$value};
+  // Icon
+  @each $size, $value in $icon-sizes {
+    --size-icon-#{$size}: #{$value};
   }
 
   // Miscellaneous
@@ -54,28 +54,25 @@
     --size-misc-#{$size}: #{$value};
   }
 
-  // Page padding
-  @each $direction, $value in $padding-page {
-    --pad-page-#{$direction}: #{$value};
+  // Wrapper padding
+  @each $direction, $value in $wrapper-padding {
+    --pad-wrapper-#{$direction}: #{$value};
   }
 
-  // Section
-  @each $size, $value in $padding-section {
-    --pad-sect-#{$size}: #{$value};
+  // Base Spacing
+  @each $size, $value in $base-spacing {
+    --space-#{$size}: #{$value};
   }
 
-  // Container padding
-  @each $size, $value in $padding-container {
-    --pad-cont-#{$size}: #{$value};
+  // Base Layout
+  @each $size, $value in $base-layout {
+    --layout-#{$size}: #{$value};
   }
 
-  // Container spacing
-  @each $size, $value in $spacer-container {
-    --space-cont-#{$size}: #{$value};
-  }
-
-  // Offset
-  @each $size, $value in $offset {
-    --offset-#{$size}: #{$value};
+  // Component spacing
+  @each $component, $space-map in $component-spacing {
+    @each $property, $value in $space-map {
+      --#{$component}-#{$property}: #{$value};
+    }
   }
 }

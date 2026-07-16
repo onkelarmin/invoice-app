@@ -144,27 +144,7 @@
   list-style: none;
 }
 
-// Page padding
-@each $direction, $value in $padding-page {
-  .pad-page-#{$direction} {
-    padding-#{$direction}: var(--pad-page-#{$direction});
-  }
-}
-
-// Section padding
-@each $size, $value in $padding-section {
-  .pad-sect-#{$size} {
-    padding-block: var(--pad-sect-#{$size});
-  }
-  .pad-sect-start-#{$size} {
-    padding-block-start: var(--pad-sect-#{$size});
-  }
-  .pad-sect-end-#{$size} {
-    padding-block-end: var(--pad-sect-#{$size});
-  }
-}
-
-// Container padding
+// Padding
 @each $size, $value in $static-sizes {
   .pad-#{$size} {
     padding: var(--size-#{$size});
@@ -189,31 +169,28 @@
   }
 }
 
-@each $size, $value in $padding-container {
+@each $size, $value in $base-spacing {
   .pad-#{$size} {
-    padding: var(--pad-cont-#{$size});
+    padding: var(--space-#{$size});
   }
   .pad-block-#{$size} {
-    padding-block: var(--pad-cont-#{$size});
+    padding-block: var(--space-#{$size});
   }
   .pad-block-start-#{$size} {
-    padding-block-start: var(--pad-cont-#{$size});
+    padding-block-start: var(--space-#{$size});
   }
   .pad-block-end-#{$size} {
-    padding-block-end: var(--pad-cont-#{$size});
-  }
-  .pad-inline-#{$size} {
-    padding-inline: var(--pad-cont-#{$size});
+    padding-block-end: var(--space-#{$size});
   }
   .pad-inline-start-#{$size} {
-    padding-inline-start: var(--pad-cont-#{$size});
+    padding-inline-start: var(--space-#{$size});
   }
   .pad-inline-end-#{$size} {
-    padding-inline-end: var(--pad-cont-#{$size});
+    padding-inline-end: var(--space-#{$size});
   }
 }
 
-// Container margin
+// Margin
 @each $size, $value in $static-sizes {
   .mar-#{$size} {
     margin: var(--size-#{$size});
@@ -238,27 +215,24 @@
   }
 }
 
-@each $size, $value in $spacer-container {
+@each $size, $value in $base-spacing {
   .mar-#{$size} {
-    margin: var(--space-cont-#{$size});
+    margin: var(--space-#{$size});
   }
   .mar-block-#{$size} {
-    margin-block: var(--space-cont-#{$size});
+    margin-block: var(--space-#{$size});
   }
   .mar-block-start-#{$size} {
-    margin-block-start: var(--space-cont-#{$size});
+    margin-block-start: var(--space-#{$size});
   }
   .mar-block-end-#{$size} {
-    margin-block-end: var(--space-cont-#{$size});
-  }
-  .mar-inline-#{$size} {
-    margin-inline: var(--space-cont-#{$size});
+    margin-block-end: var(--space-#{$size});
   }
   .mar-inline-start-#{$size} {
-    margin-inline-start: var(--space-cont-#{$size});
+    margin-inline-start: var(--space-#{$size});
   }
   .mar-inline-end-#{$size} {
-    margin-inline-end: var(--space-cont-#{$size});
+    margin-inline-end: var(--space-#{$size});
   }
 }
 
@@ -269,9 +243,9 @@
   }
 }
 
-@each $size, $value in $spacer-container {
+@each $size, $value in $base-spacing {
   .flow-#{$size} > * + * {
-    margin-block-start: var(--space-cont-#{$size});
+    margin-block-start: var(--space-#{$size});
   }
 }
 
