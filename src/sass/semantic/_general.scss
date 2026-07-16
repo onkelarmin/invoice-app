@@ -1,10 +1,8 @@
 body {
-  min-height: 100svh;
-  font: var(--font-5);
-  letter-spacing: var(--ls-5);
+  font: var(--font-body);
+  letter-spacing: var(--ls-body);
   color: var(--fg-text-base);
   background-color: var(--bg-canvas-default);
-  padding-block-end: var(--pad-page-block-end);
   text-wrap: pretty;
 }
 

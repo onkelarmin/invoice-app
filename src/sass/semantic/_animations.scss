@@ -59,12 +59,10 @@
 @keyframes fade-out {
   to {
     opacity: 0;
-    filter: blur(4px);
   }
 }
 @keyframes fade-in {
   from {
     opacity: 0;
-    filter: blur(4px);
   }
 }

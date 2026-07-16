@@ -11,6 +11,10 @@ $border-colors: (
     light: "transparent",
     dark: "transparent",
   ),
+  divider-header: (
+    light: "neutral-550",
+    dark: "neutral-550",
+  ),
   default-focus: (
     light: "primary-500",
     dark: "primary-500",
@@ -22,6 +26,11 @@ $borders: (
     width: "none",
     style: "solid",
     color: "none",
+  ),
+  divider-header: (
+    width: "md",
+    style: "solid",
+    color: "divider-header",
   ),
   default-focus: (
     width: "lg",

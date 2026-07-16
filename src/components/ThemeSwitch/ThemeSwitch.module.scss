@@ -1,0 +1,19 @@
+.themeSwitch {
+  display: grid;
+  place-items: center;
+  background: none;
+  color: var(--fg-theme-icon-idle);
+  border: none;
+  cursor: pointer;
+  transition: color var(--trans-fast-out);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--fg-theme-icon-hover);
+    }
+  }
+}
+
+.icon {
+  width: var(--size-icon-theme);
+}

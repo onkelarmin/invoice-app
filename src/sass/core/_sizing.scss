@@ -24,7 +24,11 @@ $static-sizes: (
 );
 
 // Breakpoint-specific sizes
-$breakpoint-specific-sizes: ((24px, 48px, 48px), (24px, 36px, 36px));
+$breakpoint-specific-sizes: (
+  (24px, 48px, 48px),
+  (24px, 36px, 36px),
+  (32px, 32px, 40px)
+);
 
 //  Logo
 $logo-sizes: (
@@ -42,5 +46,5 @@ $icon-sizes: (
 );
 
 $miscellaneous-sizes: (
-  test: rem(16px),
+  profile-picture: bp(32px, 32px, 40px),
 );

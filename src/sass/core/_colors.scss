@@ -7,6 +7,7 @@ $color-core-neutral: (
   "400": hsl(231 20% 61%),
   "450": hsl(231 23% 61%),
   "500": hsl(231 38% 45%),
+  "550": hsl(231 20% 36%),
   "600": hsl(231 20% 27%),
   "700": hsl(233 30% 21%),
   "800": hsl(233 31% 17%),
@@ -53,7 +54,7 @@ $background-colors: (
   canvas: (
     default: (
       light: "neutral-050",
-      dark: "neutral-800",
+      dark: "neutral-900",
     ),
   ),
   container: (
@@ -112,6 +113,22 @@ $foreground-colors: (
     target: (
       light: "neutral-000",
       dark: "neutral-000",
+    ),
+  ),
+  logo: (
+    idle: (
+      light: "neutral-000",
+      dark: "neutral-000",
+    ),
+  ),
+  theme-icon: (
+    idle: (
+      light: "neutral-300",
+      dark: "neutral-450",
+    ),
+    hover: (
+      light: "neutral-100",
+      dark: "neutral-100",
     ),
   ),
 );

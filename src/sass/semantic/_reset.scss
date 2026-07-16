@@ -14,12 +14,9 @@
   interpolate-size: allow-keywords;
 }
 
-html {
-  scrollbar-gutter: stable;
-}
-
 body {
   min-height: 100svh;
+  // overflow-y: scroll;
 }
 
 img,
