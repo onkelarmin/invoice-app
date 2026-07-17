@@ -1,3 +1,13 @@
+import { useInvoiceValue } from "@/context/useInvoiceContext";
+
 export function Homepage() {
-  return <h1>Home</h1>;
+  const { invoices } = useInvoiceValue();
+
+  return (
+    <h1>
+      {invoices.map((invoice) => (
+        <p>{invoice.clientEmail}</p>
+      ))}
+    </h1>
+  );
 }
