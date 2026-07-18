@@ -15,6 +15,10 @@ $border-colors: (
     light: "neutral-550",
     dark: "neutral-550",
   ),
+  invoice-list-item-hover: (
+    light: "primary-500",
+    dark: "primary-500",
+  ),
   default-focus: (
     light: "primary-500",
     dark: "primary-500",
@@ -31,6 +35,11 @@ $borders: (
     width: "md",
     style: "solid",
     color: "divider-header",
+  ),
+  invoice-list-item-hover: (
+    width: "md",
+    style: "solid",
+    color: "invoice-list-item-hover",
   ),
   default-focus: (
     width: "lg",

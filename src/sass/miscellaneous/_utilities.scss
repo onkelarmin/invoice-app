@@ -83,6 +83,11 @@
   }
 }
 
+// Display
+.display-inline-block {
+  display: inline-block;
+}
+
 // Text-center
 .text-center {
   text-align: center;
@@ -106,6 +111,11 @@
 // Uppercase
 .uppercase {
   text-transform: uppercase;
+}
+
+// Text decoration
+.text-deco-none {
+  text-decoration: none;
 }
 
 // Center horizontally
@@ -258,6 +268,19 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+// Hide on mobile
+.hide-mobile {
+  @include mq(medium, max) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 }
 
 // Overflow clip

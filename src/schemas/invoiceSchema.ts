@@ -65,14 +65,14 @@ export const InvoiceDraftSchema = z.object({
     .string()
     .refine((val) => refineDate(val), "Invalid date")
     .optional(),
-  description: z.string().max(MAX_LENGTHS.description).optional(),
-  paymentTerms: z.int().positive().optional(),
-  clientName: z.string().max(MAX_LENGTHS.name).optional(),
+  description: z.string().max(MAX_LENGTHS.description),
+  paymentTerms: z.union([z.int().positive(), z.literal("Not decided yet")]),
+  clientName: z.string().max(MAX_LENGTHS.name),
   clientEmail: z.union([z.email(), z.literal("")]),
   status: z.literal("draft"),
-  senderAddress: AddressSchema.partial(),
-  clientAddress: AddressSchema.partial(),
-  items: z.array(InvoiceItemSchema.partial()),
+  senderAddress: AddressSchema,
+  clientAddress: AddressSchema,
+  items: z.array(InvoiceItemSchema),
 });
 
 export const InvoicesSchema = z.array(

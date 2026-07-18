@@ -1,0 +1,21 @@
+.heading {
+  color: var(--fg-text-strong);
+  text-wrap: balance;
+
+  &[data-size="h1"] {
+    font: var(--font-heading-lg);
+    letter-spacing: var(--ls-heading-lg);
+  }
+  &[data-size="h2"] {
+    font: var(--font-heading-md);
+    letter-spacing: var(--ls-heading-md);
+  }
+  &[data-size="h3"] {
+    font: var(--font-heading-sm);
+    letter-spacing: var(--ls-heading-sm);
+  }
+  &[data-size="h4"] {
+    font: var(--font-heading-sm-variant);
+    letter-spacing: var(--ls-heading-sm-variant);
+  }
+}
