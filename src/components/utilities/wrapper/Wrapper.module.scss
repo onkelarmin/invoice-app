@@ -1,10 +1,11 @@
 .wrapper {
   --padding: calc(var(--pad-wrapper-start) + var(--pad-wrapper-end));
 
-  width: min(
+  inline-size: min(
     100% - var(--padding),
     var(--max-width, var(--size-wrapper-default))
   );
+  block-size: 100%;
   margin-inline: auto;
 
   &[data-width="narrow"] {

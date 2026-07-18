@@ -24,6 +24,7 @@ declare const classNames: {
   readonly "fg-icon-default": "fg-icon-default";
   readonly "fg-icon-theme-idle": "fg-icon-theme-idle";
   readonly "fg-icon-theme-hover": "fg-icon-theme-hover";
+  readonly "fg-illustration-empty-invoice-list": "fg-illustration-empty-invoice-list";
   readonly "br-2": "br-2";
   readonly "br-4": "br-4";
   readonly "br-6": "br-6";
@@ -74,6 +75,7 @@ declare const classNames: {
   readonly "font-heading-sm-variant": "font-heading-sm-variant";
   readonly "font-body": "font-body";
   readonly "font-body-variant": "font-body-variant";
+  readonly "font-body-variant-bold": "font-body-variant-bold";
   readonly "display-inline-block": "display-inline-block";
   readonly "text-center": "text-center";
   readonly "text-center-small": "text-center-small";

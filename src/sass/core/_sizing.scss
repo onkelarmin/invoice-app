@@ -47,6 +47,11 @@ $icon-sizes: (
   calendar: rem(16px),
 );
 
+// Illustration
+$illustration-sizes: (
+  empty-invoice-list: fluid(206px, 242px),
+);
+
 $miscellaneous-sizes: (
   profile-picture: bp(32px, 32px, 40px),
 );

@@ -225,21 +225,23 @@ export function Homepage() {
     //   Sapiente, repellendus!
     // </>
     <Wrapper>
-      <div className={styles.headerLayout}>
-        <div>
-          <Heading tag="h1" size="h1">
-            Invoices
-          </Heading>
-          <p className="font-body-variant mar-block-start-2xs">
-            <span className="hide-mobile">There are</span> {invoices.length}{" "}
-            <span className="hide-mobile">total</span> invoices
-          </p>
+      <div className={styles.pageLayout}>
+        <div className={styles.headerLayout}>
+          <div>
+            <Heading tag="h1" size="h1">
+              Invoices
+            </Heading>
+            <p className="font-body-variant mar-block-start-2xs">
+              <span className="hide-mobile">There are</span> {invoices.length}{" "}
+              <span className="hide-mobile">total</span> invoices
+            </p>
+          </div>
+
+          <div>Filter and new button</div>
         </div>
 
-        <div>Filter and new button</div>
+        <InvoiceList />
       </div>
-
-      <InvoiceList />
     </Wrapper>
   );
 }

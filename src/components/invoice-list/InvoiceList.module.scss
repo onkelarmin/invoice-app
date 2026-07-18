@@ -133,3 +133,18 @@
     }
   }
 }
+
+.emptyList {
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+
+  .illustration {
+    inline-size: var(--size-illu-empty-invoice-list);
+    color: var(--fg-illustration-empty-invoice-list);
+  }
+
+  p {
+    max-inline-size: 25ch;
+  }
+}
