@@ -20,16 +20,16 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-const initialState = {
-  invoices: getInitialInvoices(),
-};
-
 type InvoiceProviderProps = {
   children: ReactNode;
+  initialInvoices?: InvoicesType;
 };
 
-export function InvoiceProvider({ children }: InvoiceProviderProps) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export function InvoiceProvider({
+  children,
+  initialInvoices = getInitialInvoices(),
+}: InvoiceProviderProps) {
+  const [state, dispatch] = useReducer(reducer, { invoices: initialInvoices });
 
   return (
     <InvoiceValueContext.Provider value={state}>
