@@ -49,6 +49,11 @@
     --size-icon-#{$size}: #{$value};
   }
 
+  // Illustration
+  @each $size, $value in $illustration-sizes {
+    --size-illu-#{$size}: #{$value};
+  }
+
   // Miscellaneous
   @each $size, $value in $miscellaneous-sizes {
     --size-misc-#{$size}: #{$value};

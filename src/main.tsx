@@ -7,7 +7,7 @@ import { InvoiceProvider } from "./context/InvoiceProvider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <InvoiceProvider>
+    <InvoiceProvider initialInvoices={[]}>
       <RouterProvider router={router} />
     </InvoiceProvider>
   </StrictMode>,

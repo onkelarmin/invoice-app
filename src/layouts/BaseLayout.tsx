@@ -2,7 +2,7 @@ import styles from "./BaseLayout.module.scss";
 import { NavLink, Outlet } from "react-router";
 import Logo from "@/assets/svg/logo.svg?react";
 import ProfilePicture from "@/assets/image/image-avatar.jpg";
-import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
+import { ThemeSwitch } from "@/components/theme-switch/ThemeSwitch";
 
 export function BaseLayout() {
   return (
@@ -14,18 +14,19 @@ export function BaseLayout() {
             <Logo className={styles.logo} aria-hidden="true" />
           </NavLink>
         </div>
-
+        {/* Theme */}
         <div className={styles.themeContainer}>
           <ThemeSwitch />
         </div>
-
+        {/* Profile picture */}
         <div className={styles.profilePicture}>
           <img width="40" height="40" src={ProfilePicture} alt="user name" />
         </div>
       </header>
-      <div className={styles.outlet}>
+
+      <main className={styles.main}>
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 }

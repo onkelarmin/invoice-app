@@ -1,0 +1,150 @@
+@use "@/sass/miscellaneous" as *;
+
+.invoiceList {
+  display: grid;
+  gap: var(--space-md);
+  list-style: none;
+  margin-block: var(--layout-lg);
+}
+
+.invoiceListItem {
+  background-color: var(--bg-container-default);
+  border-radius: var(--br-md);
+  box-shadow: var(--bs-default);
+  outline: var(--border-none);
+  will-change: transform;
+  transition:
+    outline-color var(--trans-fast-out),
+    transform var(--trans-fast-out-sensitive);
+
+  @media (hover: hover) {
+    &:hover {
+      outline: var(--border-invoice-list-item-hover);
+      transform: scale(1.01);
+    }
+  }
+}
+
+.navLink {
+  inline-size: 100%;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: inherit;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "id name"
+    "due status"
+    "amount status";
+  padding: var(--space-xl);
+
+  .id {
+    grid-area: id;
+  }
+
+  .name {
+    grid-area: name;
+    justify-self: end;
+    font: var(--font-body-variant);
+    color: var(--fg-text-client-name);
+  }
+
+  .dueDate {
+    grid-area: due;
+    font: var(--font-body-variant);
+    color: var(--fg-text-base);
+    margin-block-start: var(--size-24);
+  }
+
+  .amount {
+    grid-area: amount;
+    font: var(--font-heading-sm);
+    color: var(--fg-text-strong);
+    margin-block-start: var(--size-8);
+  }
+
+  .status {
+    grid-area: status;
+    justify-self: end;
+    align-self: end;
+    width: 6.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs);
+    font: var(--font-heading-sm);
+    text-transform: capitalize;
+    border-radius: var(--br-sm);
+
+    &[data-status="paid"] {
+      background-color: var(--bg-status-paid);
+      color: var(--fg-text-paid);
+    }
+    &[data-status="pending"] {
+      background-color: var(--bg-status-pending);
+      color: var(--fg-text-pending);
+    }
+    &[data-status="draft"] {
+      background-color: var(--bg-status-draft);
+      color: var(--fg-text-draft);
+    }
+  }
+
+  .arrowIcon {
+    grid-area: icon;
+    width: var(--size-icon-arrow-right);
+    color: var(--fg-icon-default);
+  }
+}
+
+@include mq(medium) {
+  .inner {
+    grid-template-columns: auto 1fr 1fr 6rem auto auto;
+    grid-template-areas: "id due name amount status icon";
+    align-items: center;
+
+    .dueDate,
+    .amount {
+      margin-block-start: 0;
+    }
+
+    .id {
+      margin-inline-end: var(--space-2xl);
+    }
+
+    .name {
+      justify-self: start;
+    }
+
+    .amount {
+      justify-self: end;
+    }
+
+    .status {
+      margin-inline-start: var(--space-2xl);
+    }
+
+    .arrowIcon {
+      margin-inline-start: var(--space-lg);
+    }
+  }
+}
+
+.emptyList {
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+
+  .illustration {
+    inline-size: var(--size-illu-empty-invoice-list);
+    color: var(--fg-illustration-empty-invoice-list);
+  }
+
+  p {
+    max-inline-size: 25ch;
+  }
+}

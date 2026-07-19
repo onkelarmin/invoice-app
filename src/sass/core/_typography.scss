@@ -27,28 +27,28 @@ $font-weights: (
 
 // Fonts
 $fonts: (
-  heading-l: (
+  heading-lg: (
     "family": "base",
     "size": bp(24px, 36px, 36px),
     "weight": "bold",
     "line-height": 0.92,
     "letter-spacing": -0.03em,
   ),
-  heading-m: (
+  heading-md: (
     "family": "base",
     "size": rem(24px),
     "weight": "bold",
     "line-height": 0.92,
     "letter-spacing": -0.03em,
   ),
-  heading-s: (
+  heading-sm: (
     "family": "base",
     "size": rem(15px),
     "weight": "bold",
     "line-height": 1.6,
     "letter-spacing": -0.02em,
   ),
-  heading-s-variant: (
+  heading-sm-variant: (
     "family": "base",
     "size": rem(15px),
     "weight": "bold",
@@ -66,6 +66,13 @@ $fonts: (
     "family": "base",
     "size": rem(13px),
     "weight": "medium",
+    "line-height": 1.15,
+    "letter-spacing": -0.02em,
+  ),
+  body-variant-bold: (
+    "family": "base",
+    "size": rem(13px),
+    "weight": "bold",
     "line-height": 1.15,
     "letter-spacing": -0.02em,
   ),

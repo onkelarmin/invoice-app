@@ -60,7 +60,7 @@ $background-colors: (
   container: (
     default: (
       light: "neutral-000",
-      dark: "neutral-900",
+      dark: "neutral-800",
     ),
     weak: (
       light: "neutral-050",
@@ -77,6 +77,20 @@ $background-colors: (
     form: (
       light: "neutral-000",
       dark: "neutral-900",
+    ),
+  ),
+  status: (
+    paid: (
+      light: "green-500" 0.05,
+      dark: "green-500" 0.05,
+    ),
+    pending: (
+      light: "orange-500" 0.05,
+      dark: "orange-500" 0.05,
+    ),
+    draft: (
+      light: "neutral-600" 0.05,
+      dark: "neutral-100" 0.05,
     ),
   ),
   text: (
@@ -106,6 +120,26 @@ $foreground-colors: (
       light: "neutral-950",
       dark: "neutral-000",
     ),
+    hash: (
+      light: "neutral-300",
+      dark: "neutral-300",
+    ),
+    client-name: (
+      light: "neutral-450",
+      dark: "neutral-000",
+    ),
+    paid: (
+      light: "green-500",
+      dark: "green-500",
+    ),
+    pending: (
+      light: "orange-500",
+      dark: "orange-500",
+    ),
+    draft: (
+      light: "neutral-600",
+      dark: "neutral-100",
+    ),
     selection: (
       light: "neutral-000",
       dark: "neutral-000",
@@ -121,14 +155,24 @@ $foreground-colors: (
       dark: "neutral-000",
     ),
   ),
-  theme-icon: (
-    idle: (
+  icon: (
+    default: (
+      light: "primary-500",
+      dark: "primary-500",
+    ),
+    theme-idle: (
       light: "neutral-300",
       dark: "neutral-450",
     ),
-    hover: (
+    theme-hover: (
       light: "neutral-100",
       dark: "neutral-100",
+    ),
+  ),
+  illustration: (
+    empty-invoice-list: (
+      light: "primary-500",
+      dark: "primary-500",
     ),
   ),
 );

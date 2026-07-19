@@ -227,13 +227,13 @@ export const initialData = [
       country: "",
     },
     items: [
-      {
-        id: "4137ae30-aa7f-42ac-a823-acdb6727329e",
-        name: "Logo Re-design",
-        quantity: 1,
-        price: 3102.04,
-        total: 3102.04,
-      },
+      // {
+      //   id: "4137ae30-aa7f-42ac-a823-acdb6727329e",
+      //   name: "Logo Re-design",
+      //   quantity: 1,
+      //   price: 3102.04,
+      //   total: 3102.04,
+      // },
     ],
     total: 3102.04,
   },
