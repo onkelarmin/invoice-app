@@ -13,9 +13,7 @@ import PlusIcon from "@/assets/svg/icon-plus.svg?react";
 export function Homepage() {
   const { invoices } = useInvoiceValue();
 
-  const [filters, setFilters] = useState<FilterSet>(
-    new Set(["draft", "pending", "paid"]),
-  );
+  const [filters, setFilters] = useState<FilterSet>(new Set([]));
 
   const handleFilterChange = (value: string, isChecked: boolean) => {
     if (!isStatus(value)) return;
@@ -33,9 +31,12 @@ export function Homepage() {
     });
   };
 
-  const visibleInvoices = invoices.filter((invoice) => {
-    return filters.has(invoice.status);
-  });
+  const visibleInvoices =
+    filters.size === 0
+      ? invoices
+      : invoices.filter((invoice) => {
+          return filters.has(invoice.status);
+        });
 
   return (
     <Wrapper>
@@ -53,9 +54,12 @@ export function Homepage() {
                 "No invoices"
               ) : (
                 <>
-                  <span className="hide-mobile">There are</span>{" "}
+                  <span className="hide-mobile">
+                    There {visibleInvoices.length === 1 ? "is" : "are"}
+                  </span>{" "}
                   {visibleInvoices.length}{" "}
-                  <span className="hide-mobile">total</span> invoices
+                  <span className="hide-mobile">total</span>{" "}
+                  {visibleInvoices.length === 1 ? "invoice" : "invoices"}
                 </>
               )}
             </p>
