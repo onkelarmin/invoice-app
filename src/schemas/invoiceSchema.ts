@@ -1,3 +1,4 @@
+import { FILTER_STATUS } from "@/data/constants";
 import { Temporal } from "@js-temporal/polyfill";
 import z from "zod";
 
@@ -47,7 +48,7 @@ export const InvoiceSchema = z.object({
   paymentTerms: z.int().positive(),
   clientName: z.string().max(MAX_LENGTHS.name),
   clientEmail: z.email(),
-  status: z.enum(["pending", "paid"]),
+  status: z.enum([FILTER_STATUS.paid, FILTER_STATUS.pending]),
   senderAddress: AddressSchema,
   clientAddress: AddressSchema,
   items: z.array(InvoiceItemSchema),
@@ -69,7 +70,7 @@ export const InvoiceDraftSchema = z.object({
   paymentTerms: z.union([z.int().positive(), z.literal("Not decided yet")]),
   clientName: z.string().max(MAX_LENGTHS.name),
   clientEmail: z.union([z.email(), z.literal("")]),
-  status: z.literal("draft"),
+  status: z.literal(FILTER_STATUS.draft),
   senderAddress: AddressSchema,
   clientAddress: AddressSchema,
   items: z.array(InvoiceItemSchema),

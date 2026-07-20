@@ -1,0 +1,120 @@
+.listButton {
+  anchor-name: --filter-button;
+
+  .arrowIcon {
+    width: var(--size-icon-arrow-down);
+    color: var(--fg-icon-default);
+    margin-inline-start: var(--space-sm);
+    transition: rotate var(--trans-fast-out-sensitive);
+  }
+}
+
+:has(:popover-open) .arrowIcon {
+  rotate: 180deg;
+}
+
+.listContainer {
+  position-anchor: --filter-button;
+  top: anchor(bottom);
+  right: anchor(right);
+  left: auto;
+  z-index: 1;
+  background-color: var(--bg-container-weak);
+  border-radius: var(--br-md);
+  border: none;
+  box-shadow: var(--bs-none);
+  padding: var(--space-lg);
+  margin-block-start: var(--space-lg);
+  transform: translateX(4rem);
+  opacity: 0;
+  transition:
+    opacity var(--trans-fast-out),
+    display var(--trans-fast-out) allow-discrete,
+    box-shadow var(--trans-default-out);
+
+  &:popover-open {
+    opacity: 1;
+    box-shadow: var(--bs-filter-list);
+
+    @starting-style {
+      opacity: 0;
+      box-shadow: var(--bs-none);
+    }
+  }
+
+  .inner {
+    min-inline-size: 12rem;
+    display: grid;
+    gap: var(--space-md);
+    border: none;
+
+    .formControl {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+
+      .checkBox {
+        inline-size: 1rem;
+        block-size: 1rem;
+        display: grid;
+        place-content: center;
+        border-radius: var(--br-2xs);
+        background-color: var(--bg-container-filter-checkbox);
+        outline: var(--border-none);
+        outline-offset: var(--bo-check-box);
+        transition:
+          background-color var(--trans-fast-out),
+          outline-color var(--trans-fast-out),
+          outline-offset var(--trans-fast-out-sensitive);
+
+        .checkIcon {
+          inline-size: var(--size-icon-check);
+          color: var(--fg-icon-check);
+          opacity: 0;
+          transition: opacity var(--trans-fast-out);
+        }
+      }
+
+      .text {
+        font: var(--font-heading-sm-variant);
+        letter-spacing: var(--ls-heading-sm-variant);
+        text-transform: capitalize;
+        color: var(--fg-text-strong);
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          .checkBox {
+            outline: var(--border-highlight);
+          }
+        }
+      }
+
+      &:has(input:focus-visible) {
+        border-radius: var(--br-2xs);
+        outline: var(--border-default-focus);
+        outline-offset: var(--bo-default-focus);
+      }
+
+      &:has(input:checked) {
+        .checkBox {
+          background-color: var(--clr-primary-500);
+        }
+
+        .checkIcon {
+          opacity: 1;
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            .checkBox {
+              background-color: var(--clr-primary-400);
+              outline-color: var(--clr-primary-400);
+            }
+          }
+        }
+      }
+    }
+  }
+}

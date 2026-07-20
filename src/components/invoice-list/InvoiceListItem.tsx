@@ -21,7 +21,7 @@ export function InvoiceListItem({ invoice }: InvoiceListItemProps) {
       <NavLink to={`/invoices/${invoice.id}`} className={styles.navLink}>
         <article className={styles.inner}>
           {/* ID */}
-          <Heading tag="h2" size="h4" className={styles.id}>
+          <Heading tag="h2" size="h4" classes={styles.id}>
             <span className="fg-text-hash">#</span>
             {invoice.id}
           </Heading>

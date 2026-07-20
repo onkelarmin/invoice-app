@@ -6,6 +6,11 @@ $border-widths: (
   lg: rem(2px),
 );
 
+$border-offsets: (
+  default-focus: rem(2px),
+  check-box: rem(-1px),
+);
+
 $border-colors: (
   none: (
     light: "transparent",
@@ -15,7 +20,7 @@ $border-colors: (
     light: "neutral-550",
     dark: "neutral-550",
   ),
-  invoice-list-item-hover: (
+  highlight: (
     light: "primary-500",
     dark: "primary-500",
   ),
@@ -36,11 +41,12 @@ $borders: (
     style: "solid",
     color: "divider-header",
   ),
-  invoice-list-item-hover: (
+  highlight: (
     width: "md",
     style: "solid",
-    color: "invoice-list-item-hover",
+    color: "highlight",
   ),
+
   default-focus: (
     width: "lg",
     style: "solid",

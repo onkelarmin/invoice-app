@@ -2,6 +2,7 @@
 
 .invoiceList {
   display: grid;
+  align-content: start;
   gap: var(--space-md);
   list-style: none;
   margin-block: var(--layout-lg);
@@ -19,9 +20,14 @@
 
   @media (hover: hover) {
     &:hover {
-      outline: var(--border-invoice-list-item-hover);
+      outline: var(--border-highlight);
       transform: scale(1.01);
     }
+  }
+
+  &:has(.navLink:focus-visible) {
+    outline: var(--border-highlight);
+    transform: scale(1.01);
   }
 }
 
@@ -30,6 +36,10 @@
   display: inline-block;
   text-decoration: none;
   border-radius: inherit;
+
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 .inner {
@@ -49,12 +59,14 @@
     grid-area: name;
     justify-self: end;
     font: var(--font-body-variant);
+    letter-spacing: var(--ls-body-variant);
     color: var(--fg-text-client-name);
   }
 
   .dueDate {
     grid-area: due;
     font: var(--font-body-variant);
+    letter-spacing: var(--ls-body-variant);
     color: var(--fg-text-base);
     margin-block-start: var(--size-24);
   }
@@ -62,6 +74,7 @@
   .amount {
     grid-area: amount;
     font: var(--font-heading-sm);
+    letter-spacing: var(--ls--heading-sm);
     color: var(--fg-text-strong);
     margin-block-start: var(--size-8);
   }
@@ -77,6 +90,7 @@
     align-items: center;
     gap: var(--space-xs);
     font: var(--font-heading-sm);
+    letter-spacing: var(--ls--heading-sm);
     text-transform: capitalize;
     border-radius: var(--br-sm);
 

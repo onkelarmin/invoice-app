@@ -74,6 +74,10 @@ $background-colors: (
       light: "neutral-600",
       dark: "neutral-800",
     ),
+    filter-checkbox: (
+      light: "neutral-100",
+      dark: "neutral-800",
+    ),
     form: (
       light: "neutral-000",
       dark: "neutral-900",
@@ -167,6 +171,10 @@ $foreground-colors: (
     theme-hover: (
       light: "neutral-100",
       dark: "neutral-100",
+    ),
+    check: (
+      light: "neutral-000",
+      dark: "neutral-000",
     ),
   ),
   illustration: (

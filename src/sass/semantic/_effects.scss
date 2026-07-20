@@ -7,6 +7,11 @@
     --bw-#{$size}: #{$value};
   }
 
+  // Border-offsets
+  @each $size, $value in $border-offsets {
+    --bo-#{$size}: #{$value};
+  }
+
   // Borders
   @each $type, $property-map in $borders {
     --border-#{$type}: var(--bw-#{map.get($property-map, "width")})

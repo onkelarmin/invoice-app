@@ -3,9 +3,40 @@ import styles from "./HomePage.module.scss";
 import { Heading } from "@/components/utilities/heading/Heading";
 import { Wrapper } from "@/components/utilities/wrapper/Wrapper";
 import { useInvoiceValue } from "@/context/useInvoiceContext";
+import { InvoiceFilter } from "@/components/filter-invoices/InvoiceFilter";
+import { useState } from "react";
+import type { FilterSet } from "@/types/invoice";
+import { isStatus } from "@/lib/isStatus";
+import { Button } from "@/components/utilities/button/Button";
+import PlusIcon from "@/assets/svg/icon-plus.svg?react";
 
 export function Homepage() {
   const { invoices } = useInvoiceValue();
+
+  const [filters, setFilters] = useState<FilterSet>(new Set([]));
+
+  const handleFilterChange = (value: string, isChecked: boolean) => {
+    if (!isStatus(value)) return;
+
+    setFilters((prev) => {
+      const next = new Set(prev);
+
+      if (isChecked) {
+        next.add(value);
+      } else {
+        next.delete(value);
+      }
+
+      return next;
+    });
+  };
+
+  const visibleInvoices =
+    filters.size === 0
+      ? invoices
+      : invoices.filter((invoice) => {
+          return filters.has(invoice.status);
+        });
 
   return (
     <Wrapper>
@@ -19,22 +50,35 @@ export function Homepage() {
               className="font-body-variant mar-block-start-2xs"
               data-testid="total-count"
             >
-              {invoices.length === 0 ? (
+              {visibleInvoices.length === 0 ? (
                 "No invoices"
               ) : (
                 <>
-                  <span className="hide-mobile">There are</span>{" "}
-                  {invoices.length} <span className="hide-mobile">total</span>{" "}
-                  invoices
+                  <span className="hide-mobile">
+                    There {visibleInvoices.length === 1 ? "is" : "are"}
+                  </span>{" "}
+                  {visibleInvoices.length}{" "}
+                  <span className="hide-mobile">total</span>{" "}
+                  {visibleInvoices.length === 1 ? "invoice" : "invoices"}
                 </>
               )}
             </p>
           </div>
 
-          <div>Filter and new button</div>
+          <div className={styles.controls}>
+            <InvoiceFilter values={filters} onChange={handleFilterChange} />
+            <Button variant="new-invoice">
+              <div className={styles.iconContainer}>
+                <PlusIcon className={styles.plusIcon} aria-hidden="true" />
+              </div>
+              <span className={styles.text}>
+                New<span className="hide-mobile"> Invoice</span>
+              </span>
+            </Button>
+          </div>
         </div>
 
-        <InvoiceList />
+        <InvoiceList invoices={visibleInvoices} />
       </div>
     </Wrapper>
   );

@@ -1,11 +1,13 @@
 import styles from "./InvoiceList.module.scss";
-import { useInvoiceValue } from "@/context/useInvoiceContext";
 import { InvoiceListItem } from "./InvoiceListItem";
 import { EmptyList } from "./EmptyList";
+import type { InvoicesType } from "@/types/invoice";
 
-export function InvoiceList() {
-  const { invoices } = useInvoiceValue();
+type InvoiceListProps = {
+  invoices: InvoicesType;
+};
 
+export function InvoiceList({ invoices }: InvoiceListProps) {
   if (invoices.length === 0) return <EmptyList />;
 
   return (
