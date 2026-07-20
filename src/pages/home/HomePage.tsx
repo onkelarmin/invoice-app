@@ -3,9 +3,33 @@ import styles from "./HomePage.module.scss";
 import { Heading } from "@/components/utilities/heading/Heading";
 import { Wrapper } from "@/components/utilities/wrapper/Wrapper";
 import { useInvoiceValue } from "@/context/useInvoiceContext";
+import { InvoiceFilter } from "@/components/filter-invoices/InvoiceFilter";
+import { useState } from "react";
+import type { FilterSet } from "@/types/invoice";
+import { isStatus } from "@/lib/isStatus";
 
 export function Homepage() {
   const { invoices } = useInvoiceValue();
+
+  const [filters, setFilters] = useState<FilterSet>(
+    new Set(["draft", "pending", "paid"]),
+  );
+
+  const handleFilterChange = (value: string, isChecked: boolean) => {
+    if (!isStatus(value)) return;
+
+    setFilters((prev) => {
+      const next = new Set(prev);
+
+      if (isChecked) {
+        next.add(value);
+      } else {
+        next.delete(value);
+      }
+
+      return next;
+    });
+  };
 
   return (
     <Wrapper>
@@ -31,10 +55,12 @@ export function Homepage() {
             </p>
           </div>
 
-          <div>Filter and new button</div>
+          <div>
+            <InvoiceFilter values={filters} onChange={handleFilterChange} />
+          </div>
         </div>
 
-        <InvoiceList />
+        <InvoiceList filters={filters} />
       </div>
     </Wrapper>
   );

@@ -1,0 +1,86 @@
+.arrowIcon {
+  width: var(--size-icon-arrow-down);
+  color: var(--fg-icon-default);
+  margin-inline-start: var(--space-sm);
+}
+
+.listContainer {
+  background-color: var(--bg-container-weak);
+  border-radius: var(--br-md);
+  box-shadow: var(--bs-filter-list);
+  padding: var(--space-lg);
+
+  .inner {
+    min-inline-size: 12rem;
+    display: grid;
+    gap: var(--space-md);
+    border: none;
+
+    .formControl {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+
+      .checkBox {
+        inline-size: 1rem;
+        block-size: 1rem;
+        display: grid;
+        place-content: center;
+        border-radius: var(--br-2xs);
+        background-color: var(--bg-container-filter-checkbox);
+        outline: var(--border-none);
+        outline-offset: var(--bo-check-box);
+        transition:
+          background-color var(--trans-fast-out),
+          outline-color var(--trans-fast-out),
+          outline-offset var(--trans-fast-out-sensitive);
+
+        .checkIcon {
+          inline-size: var(--size-icon-check);
+          color: var(--fg-icon-check);
+          opacity: 0;
+          transition: opacity var(--trans-fast-out);
+        }
+      }
+
+      .text {
+        font: var(--font-heading-sm-variant);
+        letter-spacing: var(--ls-heading-sm-variant);
+        text-transform: capitalize;
+        color: var(--fg-text-strong);
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          .checkBox {
+            outline: var(--border-highlight);
+          }
+        }
+      }
+
+      &:has(input:focus-visible) {
+        .checkBox {
+          outline: var(--border-default-focus);
+          outline-offset: var(--bo-default-focus);
+        }
+      }
+
+      &:has(input:checked) {
+        .checkBox {
+          background-color: var(--clr-primary-500);
+
+          @media (hover: hover) {
+            &:hover {
+              background-color: var(--clr-primary-400);
+              outline-color: var(--clr-primary-400);
+            }
+          }
+
+          .checkIcon {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
