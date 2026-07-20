@@ -7,6 +7,8 @@ import { InvoiceFilter } from "@/components/filter-invoices/InvoiceFilter";
 import { useState } from "react";
 import type { FilterSet } from "@/types/invoice";
 import { isStatus } from "@/lib/isStatus";
+import { Button } from "@/components/utilities/button/Button";
+import PlusIcon from "@/assets/svg/icon-plus.svg?react";
 
 export function Homepage() {
   const { invoices } = useInvoiceValue();
@@ -61,7 +63,14 @@ export function Homepage() {
 
           <div className={styles.controls}>
             <InvoiceFilter values={filters} onChange={handleFilterChange} />
-            <button>new Invoice</button>
+            <Button variant="new-invoice">
+              <div className={styles.iconContainer}>
+                <PlusIcon className={styles.plusIcon} aria-hidden="true" />
+              </div>
+              <span className={styles.text}>
+                New<span className="hide-mobile"> Invoice</span>
+              </span>
+            </Button>
           </div>
         </div>
 

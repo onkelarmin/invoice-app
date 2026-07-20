@@ -3,7 +3,7 @@ import styles from "./Button.module.scss";
 
 type ButtonProps<T extends ElementType> = {
   As?: T;
-  variant: "ghost" | "primary";
+  variant: "ghost" | "primary" | "new-invoice";
   classes?: string;
   children: ReactNode;
 } & ComponentPropsWithoutRef<T>;

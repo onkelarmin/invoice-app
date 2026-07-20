@@ -15,4 +15,21 @@
   display: flex;
   align-items: center;
   gap: var(--space-xl);
+
+  .iconContainer {
+    inline-size: 2rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    background-color: var(--clr-neutral-000);
+    border-radius: var(--br-round);
+
+    .plusIcon {
+      width: var(--size-icon-plus);
+    }
+  }
+
+  .text {
+    color: var(--btn-fg-color-hover-primary);
+  }
 }

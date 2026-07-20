@@ -50,13 +50,15 @@ $button-colors: (
 
 $button-appearance: (
   padding-inline-start: (
-    primary: 24px,
+    primary: rem(24px),
+    new-invoice: fluid(6px, 8px),
   ),
   padding-inline-end: (
-    primary: 24px,
+    primary: rem(24px),
   ),
   padding-block: (
-    primary: 18px,
+    primary: rem(18px),
+    new-invoice: fluid(6px, 8px),
   ),
   border-width: (
     primary: 0px,
@@ -64,10 +66,7 @@ $button-appearance: (
   border-radius: (
     primary: 1000px,
   ),
-);
-
-$components: (
-  button: (
-    color: (),
+  gap: (
+    new-invoice: fluid(8px, 16px),
   ),
 );
