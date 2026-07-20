@@ -13,7 +13,7 @@ const sizes = {
 type HeadingProps = {
   tag: keyof typeof sizes;
   size: keyof typeof sizes;
-  className?: string;
+  classes?: string;
   children: ReactNode;
 } & ComponentPropsWithoutRef<"h1">;
 
@@ -21,14 +21,14 @@ export function Heading({
   tag,
   size,
   children,
-  className,
+  classes,
   ...rest
 }: HeadingProps) {
   const Component = tag;
 
   return (
     <Component
-      className={`${styles.heading} ${className}`}
+      className={`${styles.heading} ${classes}`}
       data-size={sizes[size]}
       {...rest}
     >

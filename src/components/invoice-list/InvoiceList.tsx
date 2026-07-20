@@ -1,25 +1,18 @@
 import styles from "./InvoiceList.module.scss";
-import { useInvoiceValue } from "@/context/useInvoiceContext";
 import { InvoiceListItem } from "./InvoiceListItem";
 import { EmptyList } from "./EmptyList";
-import type { FilterSet } from "@/types/invoice";
+import type { InvoicesType } from "@/types/invoice";
 
 type InvoiceListProps = {
-  filters: FilterSet;
+  invoices: InvoicesType;
 };
 
-export function InvoiceList({ filters }: InvoiceListProps) {
-  const { invoices } = useInvoiceValue();
-
+export function InvoiceList({ invoices }: InvoiceListProps) {
   if (invoices.length === 0) return <EmptyList />;
-
-  const visibleInvoices = invoices.filter((invoice) => {
-    return filters.has(invoice.status);
-  });
 
   return (
     <ul className={styles.invoiceList}>
-      {visibleInvoices.map((invoice) => (
+      {invoices.map((invoice) => (
         <InvoiceListItem key={invoice.id} invoice={invoice} />
       ))}
     </ul>

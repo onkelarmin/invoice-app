@@ -14,14 +14,19 @@ export function InvoiceFilter({ values, onChange }: InvoiceFilterProps) {
   return (
     <>
       {/* Button */}
-      <Button variant="ghost">
+      <Button
+        variant="ghost"
+        popoverTarget="filter-list"
+        classes={styles.listButton}
+      >
         <span>
           Filter <span className="hide-mobile">by status</span>
         </span>
         <ArrowIcon className={styles.arrowIcon} aria-hidden="true" />
       </Button>
+
       {/* Filter list */}
-      <div className={styles.listContainer}>
+      <div className={styles.listContainer} id="filter-list" popover="auto">
         <fieldset className={styles.inner}>
           <legend className="visually-hidden">Filter invoices by status</legend>
           {Object.values(FILTER_STATUS).map((status) => (

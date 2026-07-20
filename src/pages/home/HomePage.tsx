@@ -31,6 +31,10 @@ export function Homepage() {
     });
   };
 
+  const visibleInvoices = invoices.filter((invoice) => {
+    return filters.has(invoice.status);
+  });
+
   return (
     <Wrapper>
       <div className={styles.pageLayout}>
@@ -43,24 +47,25 @@ export function Homepage() {
               className="font-body-variant mar-block-start-2xs"
               data-testid="total-count"
             >
-              {invoices.length === 0 ? (
+              {visibleInvoices.length === 0 ? (
                 "No invoices"
               ) : (
                 <>
                   <span className="hide-mobile">There are</span>{" "}
-                  {invoices.length} <span className="hide-mobile">total</span>{" "}
-                  invoices
+                  {visibleInvoices.length}{" "}
+                  <span className="hide-mobile">total</span> invoices
                 </>
               )}
             </p>
           </div>
 
-          <div>
+          <div className={styles.controls}>
             <InvoiceFilter values={filters} onChange={handleFilterChange} />
+            <button>new Invoice</button>
           </div>
         </div>
 
-        <InvoiceList filters={filters} />
+        <InvoiceList invoices={visibleInvoices} />
       </div>
     </Wrapper>
   );

@@ -1,14 +1,46 @@
-.arrowIcon {
-  width: var(--size-icon-arrow-down);
-  color: var(--fg-icon-default);
-  margin-inline-start: var(--space-sm);
+.listButton {
+  anchor-name: --filter-button;
+
+  .arrowIcon {
+    width: var(--size-icon-arrow-down);
+    color: var(--fg-icon-default);
+    margin-inline-start: var(--space-sm);
+    transition: rotate var(--trans-fast-out-sensitive);
+  }
+}
+
+:has(:popover-open) .arrowIcon {
+  rotate: 180deg;
 }
 
 .listContainer {
+  position-anchor: --filter-button;
+  top: anchor(bottom);
+  right: anchor(right);
+  left: auto;
+  z-index: 1;
   background-color: var(--bg-container-weak);
   border-radius: var(--br-md);
-  box-shadow: var(--bs-filter-list);
+  border: none;
+  box-shadow: var(--bs-none);
   padding: var(--space-lg);
+  margin-block-start: var(--space-lg);
+  transform: translateX(4rem);
+  opacity: 0;
+  transition:
+    opacity var(--trans-fast-out),
+    display var(--trans-fast-out) allow-discrete,
+    box-shadow var(--trans-default-out);
+
+  &:popover-open {
+    opacity: 1;
+    box-shadow: var(--bs-filter-list);
+
+    @starting-style {
+      opacity: 0;
+      box-shadow: var(--bs-none);
+    }
+  }
 
   .inner {
     min-inline-size: 12rem;
@@ -20,6 +52,7 @@
       display: flex;
       align-items: center;
       gap: var(--space-sm);
+      cursor: pointer;
 
       .checkBox {
         inline-size: 1rem;
@@ -59,25 +92,26 @@
       }
 
       &:has(input:focus-visible) {
-        .checkBox {
-          outline: var(--border-default-focus);
-          outline-offset: var(--bo-default-focus);
-        }
+        border-radius: var(--br-2xs);
+        outline: var(--border-default-focus);
+        outline-offset: var(--bo-default-focus);
       }
 
       &:has(input:checked) {
         .checkBox {
           background-color: var(--clr-primary-500);
+        }
 
-          @media (hover: hover) {
-            &:hover {
+        .checkIcon {
+          opacity: 1;
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            .checkBox {
               background-color: var(--clr-primary-400);
               outline-color: var(--clr-primary-400);
             }
-          }
-
-          .checkIcon {
-            opacity: 1;
           }
         }
       }

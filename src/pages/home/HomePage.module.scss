@@ -10,3 +10,9 @@
   align-items: center;
   margin-block-start: var(--layout-lg);
 }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}

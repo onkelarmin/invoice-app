@@ -6,7 +6,7 @@ export function EmptyList() {
   return (
     <section role="status" className={styles.emptyList}>
       <Illustration className={styles.illustration} aria-hidden="true" />
-      <Heading tag="h2" size="h2" className="mar-block-start-3xl">
+      <Heading tag="h2" size="h2" classes="mar-block-start-3xl">
         There is nothing here
       </Heading>
       <p className="font-body-variant mar-block-start-lg">
