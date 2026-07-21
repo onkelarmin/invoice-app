@@ -14,6 +14,7 @@ export function DetailsPage() {
   if (invoiceId == null) throw new Response("Not Found", { status: 404 });
 
   const invoice = getInvoice(invoices, invoiceId);
+
   if (invoice == null) throw new Response("Invoice not found", { status: 404 });
 
   return (

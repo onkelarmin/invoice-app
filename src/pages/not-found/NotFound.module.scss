@@ -1,0 +1,12 @@
+.content {
+  block-size: 100%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.status {
+  font: var(--font-heading-md);
+}
