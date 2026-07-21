@@ -9,31 +9,37 @@ type ItemsListProps = {
 
 export function ItemsList({ items }: ItemsListProps) {
   return (
-    <div className={styles.itemsList}>
+    <div className={styles.itemsListContainer}>
       <Heading tag="h2" size="h5" classes="visually-hidden">
         Invoice items
       </Heading>
-      <div className="hide-mobile" aria-hidden="true">
+      <div className={`${styles.head} hide-mobile`} aria-hidden="true">
         <p>Item Name</p>
-        <p>QTY.</p>
-        <p>Price</p>
-        <p>Total</p>
+        <p className={styles.headQuantity}>QTY.</p>
+        <p className={styles.headPrice}>Price</p>
+        <p className={styles.headTotal}>Total</p>
       </div>
-      <ul>
+      <ul className={styles.list}>
         {items.map((item) => (
-          <li key={item.id}>
-            <Heading tag="h3" size="h4">
-              {item.name}
-            </Heading>
-            <p>
-              <span className="visualy-hidden">Quantity:</span>
+          <li key={item.id} className={styles.item}>
+            <div className={styles.name}>
+              <Heading tag="h3" size="h4">
+                {item.name}
+              </Heading>
+            </div>
+            <p className={styles.quantity}>
+              <span className="visually-hidden">Quantity:</span>
               {item.quantity}
+              <span className={styles.timesSign} aria-hidden="true">
+                {" "}
+                x
+              </span>
             </p>
-            <p>
+            <p className={styles.price}>
               <span className="visually-hidden">Price:</span>
               {formatCurrency(item.price)}
             </p>
-            <p>
+            <p className={styles.total}>
               <span className="visually-hidden">Total:</span>
               {formatCurrency(item.quantity * item.price)}
             </p>

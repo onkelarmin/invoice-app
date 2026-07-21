@@ -1,4 +1,4 @@
-@use "@/sass/miscellaneous" as *;
+@use "@/sass/miscellaneous/_media-queries" as *;
 
 html,
 body,
@@ -17,6 +17,8 @@ body,
   display: grid;
   grid-template-columns: auto 1fr auto;
   background-color: var(--bg-container-header);
+  box-shadow: var(--bs-header);
+  isolation: isolate;
 
   .logoContainer {
     position: relative;

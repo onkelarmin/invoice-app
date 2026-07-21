@@ -18,13 +18,13 @@
   }
   @each $size-list in $breakpoint-specific-sizes {
     $name: get-breakpoint-specific-name($size-list);
-    @media (min-width: #{em(map.get($breakpoints, "medium"))}) {
+    @media (width > #{em(map.get($breakpoints, "medium"))}) {
       --size-#{$name}: #{rem(list.nth($size-list, 2))};
     }
   }
   @each $size-list in $breakpoint-specific-sizes {
     $name: get-breakpoint-specific-name($size-list);
-    @media (min-width: #{em(map.get($breakpoints, "large"))}) {
+    @media (width > #{em(map.get($breakpoints, "large"))}) {
       --size-#{$name}: #{rem(list.nth($size-list, 3))};
     }
   }

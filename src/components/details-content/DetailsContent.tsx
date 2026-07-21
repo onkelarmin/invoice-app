@@ -89,9 +89,11 @@ export function DetailsContent({ invoice }: DetailsContentProps) {
       <ItemsList items={items} />
 
       {/* Total amount */}
-      <div>
-        <p>Amount Due</p>
-        <p>{formatCurrency(getTotalAmount(items))}</p>
+      <div className={styles.amountDue}>
+        <p className="fg-text-total-amount">Amount Due</p>
+        <p className="font-heading-md fg-text-total-amount">
+          {formatCurrency(getTotalAmount(items))}
+        </p>
       </div>
     </section>
   );

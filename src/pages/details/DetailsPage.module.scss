@@ -1,4 +1,4 @@
-@use "@/sass/miscellaneous" as *;
+@use "@/sass/miscellaneous/_media-queries" as *;
 
 .pageLayout {
   min-block-size: 100%;
@@ -72,7 +72,7 @@
   flex-wrap: wrap;
   gap: var(--space-xs);
   background-color: var(--bg-container-default);
-  box-shadow: var(--bs-default);
+  box-shadow: var(--bs-header);
   padding-block: var(--space-lg);
   margin-block-start: var(--space-4xl);
 }
@@ -100,6 +100,7 @@
     justify-content: end;
     border-start-end-radius: var(--br-md);
     border-end-end-radius: var(--br-md);
+    box-shadow: var(--bs-default);
     margin-block-start: revert;
     padding-inline-end: var(--space-xl);
     padding-block: revert;

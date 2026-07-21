@@ -1,4 +1,4 @@
-@use "@/sass/miscellaneous" as *;
+@use "@/sass/miscellaneous/_media-queries" as *;
 
 .detailsContent {
   display: grid;
@@ -58,6 +58,17 @@
       color: var(--fg-text-strong);
       margin-block-start: var(--space-sm);
     }
+  }
+
+  .amountDue {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-container-strong);
+    border-radius: 0 0 var(--br-md) var(--br-md);
+    padding-inline: var(--space-2xl);
+    padding-block: var(--space-xl);
   }
 }
 
