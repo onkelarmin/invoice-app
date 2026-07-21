@@ -12,7 +12,7 @@ export type FilterSet = Set<FilterStatus>;
 
 export type InvoiceItem = z.infer<typeof InvoiceItemSchema>;
 
-export type InvoiceType = z.infer<typeof InvoiceSchema>;
-export type InvoiceDraftType = z.infer<typeof InvoiceDraftSchema>;
+export type Invoice = z.infer<typeof InvoiceSchema>;
+export type InvoiceDraft = z.infer<typeof InvoiceDraftSchema>;
 
 export type InvoicesType = z.infer<typeof InvoicesSchema>;

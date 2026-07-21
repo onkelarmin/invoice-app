@@ -1,5 +1,5 @@
 import styles from "./InvoiceList.module.scss";
-import type { InvoiceDraftType, InvoiceType } from "@/types/invoice";
+import type { InvoiceDraft, Invoice } from "@/types/invoice";
 import { NavLink } from "react-router";
 import { Heading } from "@/components/utilities/heading/Heading";
 import { formatDate } from "@/lib/formatDate";
@@ -9,7 +9,7 @@ import { StatusTag } from "@/components/StatusTag/StatusTag";
 import { getTotalAmount } from "@/lib/getTotalAmount";
 
 type InvoiceListItemProps = {
-  invoice: InvoiceType | InvoiceDraftType;
+  invoice: Invoice | InvoiceDraft;
 };
 
 export function InvoiceListItem({ invoice }: InvoiceListItemProps) {

@@ -1,0 +1,74 @@
+@use "@/sass/miscellaneous" as *;
+
+.detailsContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: var(--bg-container-default);
+  border-radius: var(--br-md);
+  box-shadow: var(--bs-default);
+  padding: var(--space-xl);
+  margin-block-start: var(--space-lg);
+
+  .headerContainer {
+    grid-column: 1 / span 2;
+    .hash {
+      color: var(--fg-text-hash);
+    }
+  }
+
+  .senderAddress {
+    grid-column: 1 / span 2;
+    margin-block-start: var(--space-2xl);
+  }
+
+  .datesContainer {
+    display: grid;
+    gap: var(--space-xl);
+    margin-block-start: var(--space-2xl);
+
+    .date {
+      display: grid;
+      gap: var(--space-sm);
+
+      time,
+      p {
+        font: var(--font-heading-sm);
+        color: var(--fg-text-strong);
+      }
+    }
+  }
+
+  .clientAddress {
+    margin-block-start: var(--space-2xl);
+
+    .clientName {
+      font: var(--font-heading-sm);
+      color: var(--fg-text-strong);
+      margin-block-start: var(--space-sm);
+      margin-block-end: var(--space-2xs);
+    }
+  }
+
+  .clientEmail {
+    grid-column: span 2;
+    margin-block-start: var(--space-2xl);
+
+    .email {
+      font: var(--font-heading-sm);
+      color: var(--fg-text-strong);
+      margin-block-start: var(--space-sm);
+    }
+  }
+}
+
+@include mq(medium) {
+  .detailsContent {
+    grid-template-columns: repeat(4, 1fr);
+
+    .senderAddress {
+      grid-column: -3 / span 2;
+      text-align: end;
+      margin-block-start: revert;
+    }
+  }
+}

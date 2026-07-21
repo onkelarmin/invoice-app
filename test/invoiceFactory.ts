@@ -1,8 +1,6 @@
-import type { InvoiceDraftType, InvoiceType } from "../src/types/invoice";
+import type { InvoiceDraft, Invoice } from "../src/types/invoice";
 
-export function createInvoice(
-  overrides: Partial<InvoiceType> = {},
-): InvoiceType {
+export function createInvoice(overrides: Partial<Invoice> = {}): Invoice {
   return {
     id: "ID1234",
     createdAt: "2026-07-19",
@@ -37,8 +35,8 @@ export function createInvoice(
 }
 
 export function createDraftInvoice(
-  overrides: Partial<InvoiceDraftType> = {},
-): InvoiceDraftType {
+  overrides: Partial<InvoiceDraft> = {},
+): InvoiceDraft {
   return {
     id: "ID9876",
     createdAt: "2026-07-19",
