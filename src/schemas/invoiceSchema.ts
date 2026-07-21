@@ -28,7 +28,7 @@ const AddressSchema = z.object({
   country: z.string().max(MAX_LENGTHS.country),
 });
 
-const InvoiceItemSchema = z.object({
+export const InvoiceItemSchema = z.object({
   id: z.uuid(),
   name: z.string().max(MAX_LENGTHS.itemName),
   quantity: z.int().positive(),

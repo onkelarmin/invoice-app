@@ -24,6 +24,72 @@ $button-colors: (
       ),
     ),
   ),
+  secondary: (
+    idle: (
+      bg: (
+        light: "neutral-050",
+        dark: "neutral-700",
+      ),
+      fg: (
+        light: "neutral-300",
+        dark: "neutral-100",
+      ),
+    ),
+    hover: (
+      bg: (
+        light: "neutral-100",
+        dark: "neutral-000",
+      ),
+      fg: (
+        light: "neutral-300",
+        dark: "neutral-300",
+      ),
+    ),
+  ),
+  danger: (
+    idle: (
+      bg: (
+        light: "red-500",
+        dark: "red-500",
+      ),
+      fg: (
+        light: "neutral-000",
+        dark: "neutral-000",
+      ),
+    ),
+    hover: (
+      bg: (
+        light: "red-400",
+        dark: "red-400",
+      ),
+      fg: (
+        light: "neutral-000",
+        dark: "neutral-000",
+      ),
+    ),
+  ),
+  save-as-draft: (
+    idle: (
+      bg: (
+        light: "neutral-600",
+        dark: "neutral-600",
+      ),
+      fg: (
+        light: "neutral-400",
+        dark: "neutral-100",
+      ),
+    ),
+    hover: (
+      bg: (
+        light: "neutral-950",
+        dark: "neutral-800",
+      ),
+      fg: (
+        light: "neutral-400",
+        dark: "neutral-100",
+      ),
+    ),
+  ),
   ghost: (
     idle: (
       bg: (
@@ -50,21 +116,18 @@ $button-colors: (
 
 $button-appearance: (
   padding-inline-start: (
-    primary: rem(24px),
+    default: rem(24px),
     new-invoice: fluid(6px, 8px),
   ),
   padding-inline-end: (
-    primary: rem(24px),
+    default: rem(24px),
   ),
   padding-block: (
-    primary: rem(18px),
+    default: rem(18px),
     new-invoice: fluid(6px, 8px),
   ),
-  border-width: (
-    primary: 0px,
-  ),
   border-radius: (
-    primary: 1000px,
+    default: 1000px,
   ),
   gap: (
     new-invoice: fluid(8px, 16px),

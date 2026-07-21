@@ -18,4 +18,8 @@
     font: var(--font-heading-sm-variant);
     letter-spacing: var(--ls-heading-sm-variant);
   }
+  &[data-size="h5"] {
+    font: var(--font-body-variant);
+    letter-spacing: var(--ls-body-variant);
+  }
 }

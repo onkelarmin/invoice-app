@@ -2,13 +2,14 @@
   block-size: 100%;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
+  padding-block: var(--layout-lg);
 }
 
 .headerLayout {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-block-start: var(--layout-lg);
+  // margin-block-start: var(--layout-lg);
 }
 
 .controls {

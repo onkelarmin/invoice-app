@@ -5,7 +5,7 @@
     100% - var(--padding),
     var(--max-width, var(--size-wrapper-default))
   );
-  block-size: 100%;
+  min-block-size: 100%;
   margin-inline: auto;
 
   &[data-width="narrow"] {

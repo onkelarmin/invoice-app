@@ -1,0 +1,103 @@
+@use "@/sass/miscellaneous" as *;
+
+.pageLayout {
+  min-block-size: 100%;
+  display: grid;
+  grid-template-columns:
+    [full-width-start]
+    minmax(var(--pad-wrapper-start), 1fr)
+    [content-start]
+    calc(
+      min(
+          100% - (var(--pad-wrapper-start) + var(--pad-wrapper-end)),
+          var(--size-wrapper-default)
+        ) *
+        1 / 3
+    )
+    [center]
+    calc(
+      min(
+          100% - (var(--pad-wrapper-start) + var(--pad-wrapper-end)),
+          var(--size-wrapper-default)
+        ) *
+        2 / 3
+    )
+    [content-end]
+    minmax(var(--pad-wrapper-end), 1fr)
+    [full-width-end];
+  padding-block-start: var(--layout-lg);
+
+  > * {
+    grid-column: content;
+  }
+}
+
+.arrowIcon {
+  width: var(--size-icon-arrow-left);
+  color: var(--fg-icon-default);
+  margin-inline-end: var(--space-lg);
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+  background-color: var(--bg-container-default);
+  border-radius: var(--br-md);
+  box-shadow: var(--bs-default);
+  padding: var(--space-xl);
+  margin-block-start: var(--space-xl);
+}
+
+.detailsContainer {
+  background-color: var(--bg-container-default);
+  border-radius: var(--br-md);
+  box-shadow: var(--bs-default);
+  padding: var(--space-xl);
+  margin-block-start: var(--space-lg);
+}
+
+.controlsContainer {
+  position: sticky;
+  bottom: 0;
+  grid-column: full-width;
+  align-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  background-color: var(--bg-container-default);
+  box-shadow: var(--bs-default);
+  padding-block: var(--space-lg);
+  margin-block-start: var(--space-4xl);
+}
+
+@include mq(medium) {
+  .pageLayout {
+    padding-block-end: var(--layout-lg);
+  }
+
+  .statusContainer {
+    block-size: 5.5rem;
+    grid-column: content-start / center;
+    justify-content: start;
+    border-start-end-radius: revert;
+    border-end-end-radius: revert;
+  }
+
+  .controlsContainer {
+    block-size: 5.5rem;
+    position: static;
+    grid-column: content;
+    grid-column: center / content-end;
+    grid-row: 2 / 3;
+    justify-content: end;
+    border-start-end-radius: var(--br-md);
+    border-end-end-radius: var(--br-md);
+    margin-block-start: revert;
+    padding-inline-end: var(--space-xl);
+    padding-block: revert;
+  }
+}
