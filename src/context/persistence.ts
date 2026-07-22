@@ -2,18 +2,20 @@ import { initialData } from "@/data/initialData";
 import { InvoicesSchema } from "@/schemas/invoiceSchema";
 import type { Invoices } from "@/types/invoice";
 
-const STORAGE_KEY = "invoices";
+export const STORAGE_KEY = "invoices";
 
 export function loadInvoices() {
   const raw = localStorage.getItem(STORAGE_KEY);
 
-  if (raw == null) return;
+  if (raw == null) return null;
 
-  const result = InvoicesSchema.safeParse(JSON.parse(raw));
-
-  if (!result.success) throw new Error("Invalid stored invoices data");
-
-  return result.data;
+  try {
+    const result = InvoicesSchema.safeParse(JSON.parse(raw));
+    return result.data;
+  } catch {
+    clearInvoices();
+    return null;
+  }
 }
 
 export function getPlaceholderInvoices(): Invoices {

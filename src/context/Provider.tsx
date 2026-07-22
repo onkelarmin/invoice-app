@@ -6,8 +6,8 @@ import {
   loadInvoices,
   saveInvoices,
 } from "./persistence";
-import { InvoiceDispatchContext, InvoiceValueContext } from "./InvoiceContext";
-import { reducer } from "./InvoiceReducer";
+import { InvoiceDispatchContext, InvoiceValueContext } from "./Context";
+import { reducer } from "./Reducer";
 
 type InvoiceProviderProps = {
   children: ReactNode;

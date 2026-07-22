@@ -1,4 +1,4 @@
-import type { InvoiceDraft, Invoice } from "../src/types/invoice";
+import type { InvoiceDraft, Invoice } from "@/types/invoice";
 
 export function createInvoice(overrides: Partial<Invoice> = {}): Invoice {
   return {

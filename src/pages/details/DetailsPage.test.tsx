@@ -1,9 +1,6 @@
 import { describe, expect, it } from "vitest";
-import {
-  createDraftInvoice,
-  createInvoice,
-} from "../../../test/invoiceFactory";
-import { renderRoute } from "../../../test/renderRoute";
+import { createDraftInvoice, createInvoice } from "@/test/invoiceFactory";
+import { renderRoute } from "@/test/RenderRoute";
 import { DetailsPage } from "./DetailsPage";
 import { screen, within } from "@testing-library/react";
 import { formatDate } from "@/lib/formatDate";

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { createDraftInvoice, createInvoice } from "../../test/invoiceFactory";
-import { reducer } from "./InvoiceReducer";
+import { createDraftInvoice, createInvoice } from "@/test/invoiceFactory";
+import { reducer } from "./Reducer";
 
 describe("Invoice Reducer", () => {
   it("marks the correct invoice as 'paid'", () => {

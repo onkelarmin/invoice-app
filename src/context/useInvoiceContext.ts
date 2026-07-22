@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { InvoiceDispatchContext, InvoiceValueContext } from "./InvoiceContext";
+import { InvoiceDispatchContext, InvoiceValueContext } from "./Context";
 
 export function useInvoiceValue() {
   const value = useContext(InvoiceValueContext);
