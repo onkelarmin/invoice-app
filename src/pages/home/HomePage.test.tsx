@@ -69,12 +69,14 @@ describe("Home page", () => {
 
     const invoice1 = createInvoice({
       id: "ID0001",
+      status: "pending",
       description: "description-1",
       clientName: "client-1",
       clientEmail: "client-1@test.com",
     });
     const invoice2 = createInvoice({
       id: "ID0002",
+      status: "paid",
       description: "description-2",
       clientName: "client-2",
       clientEmail: "client-2@test.com",
@@ -96,6 +98,9 @@ describe("Home page", () => {
     expect(
       screen.getByRole("heading", { name: new RegExp(invoice2.id) }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Status").nextElementSibling).toHaveTextContent(
+      invoice2.status,
+    );
     expect(screen.getByText(invoice2.description)).toBeInTheDocument();
     expect(screen.getByText(invoice2.clientName)).toBeInTheDocument();
     expect(screen.getByText(invoice2.clientEmail)).toBeInTheDocument();

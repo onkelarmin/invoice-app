@@ -12,6 +12,7 @@ describe("Invoice details page", () => {
   it("renders the correct invoice information", () => {
     const invoice1 = createInvoice({
       id: "ID0001",
+      status: "pending",
       description: "description-1",
       clientName: "client-1",
       clientEmail: "client-1@test.com",
@@ -23,6 +24,7 @@ describe("Invoice details page", () => {
     });
     const invoice2 = createInvoice({
       id: "ID0002",
+      status: "paid",
       description: "description-2",
       clientName: "client-2",
       clientEmail: "client-2@test.com",
@@ -39,6 +41,9 @@ describe("Invoice details page", () => {
     expect(
       screen.getByRole("heading", { name: new RegExp(invoice1.id) }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Status").nextElementSibling).toHaveTextContent(
+      invoice1.status,
+    );
     expect(screen.getByText(invoice1.description)).toBeInTheDocument();
     expect(screen.getByText(invoice1.clientName)).toBeInTheDocument();
     expect(screen.getByText(invoice1.clientEmail)).toBeInTheDocument();
@@ -91,6 +96,9 @@ describe("Invoice details page", () => {
     expect(
       screen.getByRole("heading", { name: new RegExp(draft.id) }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Status").nextElementSibling).toHaveTextContent(
+      "draft",
+    );
     expect(screen.getByText(draft.description)).toBeInTheDocument();
     expect(
       screen.getByRole("paragraph", { name: "Client Name" }),
