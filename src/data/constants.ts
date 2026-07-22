@@ -1,4 +1,4 @@
-export const FILTER_STATUS = {
+export const INVOICE_STATUS = {
   draft: "draft",
   pending: "pending",
   paid: "paid",

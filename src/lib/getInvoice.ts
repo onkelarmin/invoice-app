@@ -1,5 +1,5 @@
-import type { InvoicesType } from "@/types/invoice";
+import type { Invoices } from "@/types/invoice";
 
-export function getInvoice(invoices: InvoicesType, id: string) {
+export function getInvoice(invoices: Invoices, id: string) {
   return invoices.find((invoice) => invoice.id === id);
 }

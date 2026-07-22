@@ -1,10 +1,10 @@
 import styles from "./InvoiceList.module.scss";
 import { InvoiceListItem } from "./InvoiceListItem";
 import { EmptyList } from "./EmptyList";
-import type { InvoicesType } from "@/types/invoice";
+import type { Invoices } from "@/types/invoice";
 
 type InvoiceListProps = {
-  invoices: InvoicesType;
+  invoices: Invoices;
 };
 
 export function InvoiceList({ invoices }: InvoiceListProps) {

@@ -2,7 +2,7 @@ import styles from "./InvoiceFilter.module.scss";
 import { Button } from "@/components/utilities/button/Button";
 import ArrowIcon from "@/assets/svg/icon-arrow-down.svg?react";
 import CheckIcon from "@/assets/svg/icon-check.svg?react";
-import { FILTER_STATUS } from "@/data/constants";
+import { INVOICE_STATUS } from "@/data/constants";
 import type { FilterSet } from "@/types/invoice";
 
 type InvoiceFilterProps = {
@@ -29,7 +29,7 @@ export function InvoiceFilter({ values, onChange }: InvoiceFilterProps) {
       <div className={styles.listContainer} id="filter-list" popover="auto">
         <fieldset className={styles.inner}>
           <legend className="visually-hidden">Filter invoices by status</legend>
-          {Object.values(FILTER_STATUS).map((status) => (
+          {Object.values(INVOICE_STATUS).map((status) => (
             <label key={status} className={styles.formControl}>
               <input
                 type="checkbox"

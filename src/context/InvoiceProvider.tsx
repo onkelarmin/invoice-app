@@ -1,18 +1,40 @@
-import type { InvoicesType, Invoice } from "@/types/invoice";
-import { useReducer, type ReactNode } from "react";
-import { getInitialInvoices } from "./initialInvoices";
+import type { Invoices, Invoice } from "@/types/invoice";
+import { useEffect, useReducer, type ReactNode } from "react";
+import {
+  clearInvoices,
+  getPlaceholderInvoices,
+  loadInvoices,
+  saveInvoices,
+} from "./persistence";
 import { InvoiceDispatchContext, InvoiceValueContext } from "./InvoiceContext";
 
 export type State = {
-  invoices: InvoicesType;
+  invoices: Invoices;
 };
 
-export type Action = { type: "addInvoice"; payload: { invoice: Invoice } };
+export type Action =
+  | { type: "addInvoice"; payload: { invoice: Invoice } }
+  | { type: "markAsPaid"; payload: { id: string } };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "addInvoice": {
       return state;
+    }
+
+    case "markAsPaid": {
+      const { id } = action.payload;
+
+      return {
+        ...state,
+        invoices: state.invoices.map((invoice) => {
+          if (invoice.id !== id) return invoice;
+
+          if (invoice.status !== "pending") return invoice;
+
+          return { ...invoice, status: "paid" };
+        }),
+      };
     }
 
     default:
@@ -22,14 +44,28 @@ function reducer(state: State, action: Action): State {
 
 type InvoiceProviderProps = {
   children: ReactNode;
-  initialInvoices?: InvoicesType;
+  initialInvoices?: Invoices;
 };
 
 export function InvoiceProvider({
   children,
-  initialInvoices = getInitialInvoices(),
+  initialInvoices,
 }: InvoiceProviderProps) {
-  const [state, dispatch] = useReducer(reducer, { invoices: initialInvoices });
+  const [state, dispatch] = useReducer(
+    reducer,
+    initialInvoices,
+    (initialInvoices) => ({
+      invoices: initialInvoices ?? loadInvoices() ?? getPlaceholderInvoices(),
+    }),
+  );
+
+  useEffect(() => {
+    if (state.invoices.length === 0) {
+      clearInvoices();
+    } else {
+      saveInvoices(state.invoices);
+    }
+  }, [state.invoices]);
 
   return (
     <InvoiceValueContext.Provider value={state}>
