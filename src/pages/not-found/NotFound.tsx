@@ -7,19 +7,20 @@ import { Button } from "@/components/utilities/button/Button";
 export function NotFound() {
   return (
     <Wrapper>
-      <div className={styles.content}>
-        <p className={styles.status}>404</p>
-
-        <Heading tag="h1" size="h1">
-          Page not found
-        </Heading>
+      <section className={styles.content} aria-labelledby="not-found-title">
+        <div className={styles.header}>
+          <p className={styles.status}>404</p>
+          <Heading tag="h1" size="h1" id="not-found-title">
+            Page not found
+          </Heading>
+        </div>
 
         <p>Sorry, we couldn't find the page you're looking for.</p>
 
         <Button As={NavLink} variant="primary" to="/">
-          Back to Countries
+          Back to Invoices
         </Button>
-      </div>
+      </section>
     </Wrapper>
   );
 }

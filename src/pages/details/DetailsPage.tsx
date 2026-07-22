@@ -6,16 +6,17 @@ import { NavLink, useParams } from "react-router";
 import ArrowIcon from "@/assets/svg/icon-arrow-left.svg?react";
 import { StatusTag } from "@/components/StatusTag/StatusTag";
 import { DetailsContent } from "@/components/details-content/DetailsContent";
+import { NotFound } from "@/pages/not-found/NotFound";
 
 export function DetailsPage() {
   const { invoices } = useInvoiceValue();
 
   const { invoiceId } = useParams();
-  if (invoiceId == null) throw new Response("Not Found", { status: 404 });
+  if (invoiceId == null) return <NotFound />;
 
   const invoice = getInvoice(invoices, invoiceId);
 
-  if (invoice == null) throw new Response("Invoice not found", { status: 404 });
+  if (invoice == null) return <NotFound />;
 
   return (
     <div className={styles.pageLayout}>
