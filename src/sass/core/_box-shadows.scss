@@ -8,6 +8,10 @@ $box-shadow-colors: (
     light: "neutral-500" 0.1,
     dark: "neutral-500" 0.1,
   ),
+  header: (
+    light: "neutral-900" 0.1,
+    dark: "neutral-900" 0.5,
+  ),
   filter-list: (
     light: "neutral-500" 0.25,
     dark: "neutral-1000" 0.25,
@@ -17,10 +21,12 @@ $box-shadow-colors: (
 $box-shadows-offsets: (
   none: 0px 0px 0px 0px,
   default: 0px 10px 10px -10px,
+  header: 0px 0px 20px 10px,
   filter-list: 0px 10px 20px 0px,
 );
 
 $box-shadows: (
   default: (var(--box-shadow-default)),
+  header: (var(--box-shadow-header)),
   filter-list: (var(--box-shadow-filter-list)),
 );

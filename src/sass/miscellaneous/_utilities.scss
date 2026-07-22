@@ -200,6 +200,27 @@
   }
 }
 
+@each $size, $value in $base-layout {
+  .pad-layout-#{$size} {
+    padding: var(--layout-#{$size});
+  }
+  .pad-layout-block-#{$size} {
+    padding-block: var(--layout-#{$size});
+  }
+  .pad-layout-block-start-#{$size} {
+    padding-block-start: var(--layout-#{$size});
+  }
+  .pad-layout-block-end-#{$size} {
+    padding-block-end: var(--layout-#{$size});
+  }
+  .pad-layout-inline-start-#{$size} {
+    padding-inline-start: var(--layout-#{$size});
+  }
+  .pad-layout-inline-end-#{$size} {
+    padding-inline-end: var(--layout-#{$size});
+  }
+}
+
 // Margin
 @each $size, $value in $static-sizes {
   .mar-#{$size} {
@@ -243,6 +264,27 @@
   }
   .mar-inline-end-#{$size} {
     margin-inline-end: var(--space-#{$size});
+  }
+}
+
+@each $size, $value in $base-layout {
+  .mar-layout-#{$size} {
+    margin: var(--layout-#{$size});
+  }
+  .mar-layout-block-#{$size} {
+    margin-block: var(--layout-#{$size});
+  }
+  .mar-layout-block-start-#{$size} {
+    margin-block-start: var(--layout-#{$size});
+  }
+  .mar-layout-block-end-#{$size} {
+    margin-block-end: var(--layout-#{$size});
+  }
+  .mar-layout-inline-start-#{$size} {
+    margin-inline-start: var(--layout-#{$size});
+  }
+  .mar-layout-inline-end-#{$size} {
+    margin-inline-end: var(--layout-#{$size});
   }
 }
 

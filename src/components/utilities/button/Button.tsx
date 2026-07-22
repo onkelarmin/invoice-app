@@ -3,7 +3,13 @@ import styles from "./Button.module.scss";
 
 type ButtonProps<T extends ElementType> = {
   As?: T;
-  variant: "ghost" | "primary" | "new-invoice";
+  variant:
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "ghost"
+    | "new-invoice"
+    | "save-as-draft";
   classes?: string;
   children: ReactNode;
 } & ComponentPropsWithoutRef<T>;
@@ -21,7 +27,7 @@ export function Button<T extends ElementType = typeof DEFAULT_TYPE>({
 
   return (
     <Component
-      className={`${styles.button} ${classes}`}
+      className={`${styles.button} ${classes ? classes : ""}`}
       data-variant={variant}
       {...rest}
     >

@@ -1,11 +1,11 @@
-@use "@/sass/miscellaneous" as *;
+@use "@/sass/miscellaneous/_media-queries" as *;
 
 .invoiceList {
   display: grid;
   align-content: start;
   gap: var(--space-md);
   list-style: none;
-  margin-block: var(--layout-lg);
+  margin-block-start: var(--layout-lg);
 }
 
 .invoiceListItem {
@@ -83,29 +83,6 @@
     grid-area: status;
     justify-self: end;
     align-self: end;
-    width: 6.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-xs);
-    font: var(--font-heading-sm);
-    letter-spacing: var(--ls--heading-sm);
-    text-transform: capitalize;
-    border-radius: var(--br-sm);
-
-    &[data-status="paid"] {
-      background-color: var(--bg-status-paid);
-      color: var(--fg-text-paid);
-    }
-    &[data-status="pending"] {
-      background-color: var(--bg-status-pending);
-      color: var(--fg-text-pending);
-    }
-    &[data-status="draft"] {
-      background-color: var(--bg-status-draft);
-      color: var(--fg-text-draft);
-    }
   }
 
   .arrowIcon {

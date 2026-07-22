@@ -1,4 +1,4 @@
-import type { InvoicesType, InvoiceType } from "@/types/invoice";
+import type { InvoicesType, Invoice } from "@/types/invoice";
 import { useReducer, type ReactNode } from "react";
 import { getInitialInvoices } from "./initialInvoices";
 import { InvoiceDispatchContext, InvoiceValueContext } from "./InvoiceContext";
@@ -7,7 +7,7 @@ export type State = {
   invoices: InvoicesType;
 };
 
-export type Action = { type: "addInvoice"; payload: { invoice: InvoiceType } };
+export type Action = { type: "addInvoice"; payload: { invoice: Invoice } };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {

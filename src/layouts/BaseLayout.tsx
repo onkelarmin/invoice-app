@@ -3,8 +3,13 @@ import { NavLink, Outlet } from "react-router";
 import Logo from "@/assets/svg/logo.svg?react";
 import ProfilePicture from "@/assets/image/image-avatar.jpg";
 import { ThemeSwitch } from "@/components/theme-switch/ThemeSwitch";
+import type { ReactNode } from "react";
 
-export function BaseLayout() {
+type BaseLayoutProps = {
+  children?: ReactNode;
+};
+
+export function BaseLayout({ children }: BaseLayoutProps) {
   return (
     <div className={styles.baseLayout}>
       <header className={styles.header}>
@@ -25,7 +30,7 @@ export function BaseLayout() {
       </header>
 
       <main className={styles.main}>
-        <Outlet />
+        {children == null ? <Outlet /> : children}
       </main>
     </div>
   );

@@ -4,8 +4,16 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  font: var(--font-heading-sm-variant);
+  letter-spacing: var(--ls--heading-sm-variant);
   text-transform: none;
   text-decoration: none;
+  border-radius: var(--btn-border-radius-default);
+  border: none;
+  padding-inline-start: var(--btn-padding-inline-start-default);
+  padding-inline-end: var(--btn-padding-inline-end-default);
+  padding-block: var(--btn-padding-block-default);
+
   cursor: pointer;
   transition:
     background-color var(--trans-fast-out),
@@ -20,13 +28,6 @@
   &[data-variant="primary"] {
     background-color: var(--btn-bg-color-idle-primary);
     color: var(--btn-fg-color-idle-primary);
-    border: none;
-    font: var(--font-heading-sm-variant);
-    letter-spacing: var(--ls--heading-sm-variant);
-    border-radius: var(--btn-border-radius-primary);
-    padding-inline-start: var(--btn-padding-inline-start-primary);
-    padding-inline-end: var(--btn-padding-inline-end-primary);
-    padding-block: var(--btn-padding-block-primary);
 
     @media (hover: hover) {
       &:not(:disabled):hover {
@@ -36,16 +37,47 @@
     }
   }
 
+  &[data-variant="secondary"] {
+    background-color: var(--btn-bg-color-idle-secondary);
+    color: var(--btn-fg-color-idle-secondary);
+
+    @media (hover: hover) {
+      &:not(:disabled):hover {
+        background-color: var(--btn-bg-color-hover-secondary);
+        color: var(--btn-fg-color-hover-secondary);
+      }
+    }
+  }
+
+  &[data-variant="danger"] {
+    background-color: var(--btn-bg-color-idle-danger);
+    color: var(--btn-fg-color-idle-danger);
+
+    @media (hover: hover) {
+      &:not(:disabled):hover {
+        background-color: var(--btn-bg-color-hover-danger);
+        color: var(--btn-fg-color-hover-danger);
+      }
+    }
+  }
+
+  &[data-variant="save-as-draft"] {
+    background-color: var(--btn-bg-color-idle-save-as-draft);
+    color: var(--btn-fg-color-idle-save-as-draft);
+
+    @media (hover: hover) {
+      &:not(:disabled):hover {
+        background-color: var(--btn-bg-color-hover-save-as-draft);
+        color: var(--btn-fg-color-hover-save-as-draft);
+      }
+    }
+  }
+
   &[data-variant="new-invoice"] {
     gap: var(--btn-gap-new-invoice);
     background-color: var(--btn-bg-color-idle-primary);
     color: var(--btn-bg-color-idle-primary);
-    border: none;
-    font: var(--font-heading-sm-variant);
-    letter-spacing: var(--ls--heading-sm-variant);
-    border-radius: var(--btn-border-radius-primary);
     padding-inline-start: var(--btn-padding-inline-start-new-invoice);
-    padding-inline-end: var(--btn-padding-inline-end-primary);
     padding-block: var(--btn-padding-block-new-invoice);
 
     @media (hover: hover) {
@@ -59,9 +91,7 @@
   &[data-variant="ghost"] {
     background-color: var(--btn-bg-color-idle-ghost);
     color: var(--btn-fg-color-idle-ghost);
-    border: none;
-    font: var(--font-heading-sm-variant);
-    letter-spacing: var(--ls--heading-sm-variant);
+    padding: 0;
 
     @media (hover: hover) {
       &:not(:disabled):hover {

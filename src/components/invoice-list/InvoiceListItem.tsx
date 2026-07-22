@@ -1,49 +1,49 @@
 import styles from "./InvoiceList.module.scss";
-import type { InvoiceDraftType, InvoiceType } from "@/types/invoice";
+import type { InvoiceDraft, Invoice } from "@/types/invoice";
 import { NavLink } from "react-router";
 import { Heading } from "@/components/utilities/heading/Heading";
 import { formatDate } from "@/lib/formatDate";
 import { formatCurrency } from "@/lib/formatCurrency";
-import StatusIcon from "@/assets/svg/icon-status.svg?react";
 import ArrowIcon from "@/assets/svg/icon-arrow-right.svg?react";
+import { StatusTag } from "@/components/StatusTag/StatusTag";
+import { getTotalAmount } from "@/lib/getTotalAmount";
 
 type InvoiceListItemProps = {
-  invoice: InvoiceType | InvoiceDraftType;
+  invoice: Invoice | InvoiceDraft;
 };
 
 export function InvoiceListItem({ invoice }: InvoiceListItemProps) {
-  const totalAmount = invoice.items.reduce((amount, item) => {
-    return amount + item.price * item.quantity;
-  }, 0);
+  const { id, clientName, paymentDue, status, items } = invoice;
 
   return (
     <li className={styles.invoiceListItem}>
-      <NavLink to={`/invoices/${invoice.id}`} className={styles.navLink}>
+      <NavLink
+        to={`/invoices/${id}`}
+        className={styles.navLink}
+        aria-label={`See details for ${id}`}
+      >
         <article className={styles.inner}>
           {/* ID */}
           <Heading tag="h2" size="h4" classes={styles.id}>
             <span className="fg-text-hash">#</span>
-            {invoice.id}
+            {id}
           </Heading>
 
           {/* Client name */}
           <p className={styles.name}>
             <span className="visually-hidden">Client:</span>
-            {invoice.clientName === "" ? "No Client Name" : invoice.clientName}
+            {clientName === "" ? "No Client Name" : clientName}
           </p>
 
           {/* Due date */}
           <p className={styles.dueDate}>
-            {invoice.paymentDue == null ? (
+            {paymentDue == null ? (
               "No Due Date"
             ) : (
               <span>
                 Due{" "}
-                <time
-                  dateTime={invoice.paymentDue}
-                  className="fg-text-emphasised"
-                >
-                  {formatDate(invoice.paymentDue)}
+                <time dateTime={paymentDue} className="fg-text-emphasised">
+                  {formatDate(paymentDue)}
                 </time>
               </span>
             )}
@@ -52,15 +52,13 @@ export function InvoiceListItem({ invoice }: InvoiceListItemProps) {
           {/* Total amount */}
           <p className={styles.amount}>
             <span className="visually-hidden">Total amount:</span>
-            {formatCurrency(totalAmount)}
+            {formatCurrency(getTotalAmount(items))}
           </p>
 
           {/* Status */}
-          <p className={styles.status} data-status={invoice.status}>
-            <span className="visually-hidden">Status:</span>
-            <StatusIcon aria-hidden="true" />
-            {invoice.status}
-          </p>
+          <div className={styles.status}>
+            <StatusTag status={status} />
+          </div>
 
           {/* Arrow */}
           <ArrowIcon

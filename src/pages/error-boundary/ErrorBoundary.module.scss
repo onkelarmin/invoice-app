@@ -1,0 +1,18 @@
+.content {
+  block-size: 100%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-xl);
+  text-align: center;
+}
+
+.header {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.eyebrow {
+  font: var(--font-heading-md);
+  letter-spacing: var(--ls-heading-md);
+}
