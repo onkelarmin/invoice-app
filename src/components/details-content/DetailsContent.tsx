@@ -70,7 +70,9 @@ export function DetailsContent({ invoice }: DetailsContentProps) {
         <Heading tag="h2" size="h5">
           Bill To
         </Heading>
-        <p className={styles.clientName}>{clientName}</p>
+        <p className={styles.clientName} aria-label="Client Name">
+          {clientName}
+        </p>
         <p>{clientAddress.street}</p>
         <p>{clientAddress.city}</p>
         <p>{clientAddress.postCode}</p>

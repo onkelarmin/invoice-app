@@ -27,7 +27,7 @@ export function Button<T extends ElementType = typeof DEFAULT_TYPE>({
 
   return (
     <Component
-      className={`${styles.button} ${classes}`}
+      className={`${styles.button} ${classes ? classes : ""}`}
       data-variant={variant}
       {...rest}
     >

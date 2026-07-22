@@ -6,6 +6,8 @@ import {
 import { renderRoute } from "../../../test/renderRoute";
 import { Homepage } from "./HomePage";
 import { screen } from "@testing-library/react";
+import { DetailsPage } from "@/pages/details/DetailsPage";
+import userEvent from "@testing-library/user-event";
 
 describe("Home page", () => {
   it("renders the available invoices", () => {
@@ -60,5 +62,42 @@ describe("Home page", () => {
     expect(heading.nextElementSibling).toHaveTextContent(
       "Create an invoice by clicking the New Invoice button and get started",
     );
+  });
+
+  it("navigates to the correct details page when clicking on the link", async () => {
+    const user = userEvent.setup();
+
+    const invoice1 = createInvoice({
+      id: "ID0001",
+      description: "description-1",
+      clientName: "client-1",
+      clientEmail: "client-1@test.com",
+    });
+    const invoice2 = createInvoice({
+      id: "ID0002",
+      description: "description-2",
+      clientName: "client-2",
+      clientEmail: "client-2@test.com",
+    });
+
+    renderRoute({
+      routes: [
+        { path: "/", element: <Homepage /> },
+        { path: "/invoices/:invoiceId", element: <DetailsPage /> },
+      ],
+      initialEntries: ["/"],
+      invoices: [invoice1, invoice2],
+    });
+
+    await user.click(
+      screen.getByRole("link", { name: `See details for ${invoice2.id}` }),
+    );
+
+    expect(
+      screen.getByRole("heading", { name: new RegExp(invoice2.id) }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(invoice2.description)).toBeInTheDocument();
+    expect(screen.getByText(invoice2.clientName)).toBeInTheDocument();
+    expect(screen.getByText(invoice2.clientEmail)).toBeInTheDocument();
   });
 });

@@ -17,7 +17,11 @@ export function InvoiceListItem({ invoice }: InvoiceListItemProps) {
 
   return (
     <li className={styles.invoiceListItem}>
-      <NavLink to={`/invoices/${id}`} className={styles.navLink}>
+      <NavLink
+        to={`/invoices/${id}`}
+        className={styles.navLink}
+        aria-label={`See details for ${id}`}
+      >
         <article className={styles.inner}>
           {/* ID */}
           <Heading tag="h2" size="h4" classes={styles.id}>

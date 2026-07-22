@@ -28,7 +28,7 @@ export function Heading({
 
   return (
     <Component
-      className={`${styles.heading} ${classes}`}
+      className={`${styles.heading} ${classes ? classes : ""}`}
       data-size={sizes[size]}
       {...rest}
     >
