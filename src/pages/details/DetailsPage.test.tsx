@@ -6,6 +6,7 @@ import {
 import { renderRoute } from "../../../test/renderRoute";
 import { DetailsPage } from "./DetailsPage";
 import { screen, within } from "@testing-library/react";
+import { formatDate } from "@/lib/formatDate";
 
 describe("Invoice details page", () => {
   it("renders the correct invoice information", () => {
@@ -41,7 +42,9 @@ describe("Invoice details page", () => {
     expect(screen.getByText(invoice1.description)).toBeInTheDocument();
     expect(screen.getByText(invoice1.clientName)).toBeInTheDocument();
     expect(screen.getByText(invoice1.clientEmail)).toBeInTheDocument();
-    expect(screen.getByText("22 July 2026")).toBeInTheDocument();
+    expect(
+      screen.getByText(formatDate(invoice1.paymentDue)),
+    ).toBeInTheDocument();
 
     const item = invoice1.items[0];
     const listItem = screen.getByRole("listitem", {
