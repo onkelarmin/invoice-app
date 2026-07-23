@@ -6,7 +6,8 @@ export type State = {
 
 export type Action =
   | { type: "addInvoice"; payload: { invoice: Invoice } }
-  | { type: "markAsPaid"; payload: { id: string } };
+  | { type: "markAsPaid"; payload: { id: string } }
+  | { type: "deleteInvoice"; payload: { id: string } };
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -17,6 +18,8 @@ export function reducer(state: State, action: Action): State {
     case "markAsPaid": {
       const { id } = action.payload;
 
+      if (id == null) return state;
+
       return {
         ...state,
         invoices: state.invoices.map((invoice) => {
@@ -26,6 +29,17 @@ export function reducer(state: State, action: Action): State {
 
           return { ...invoice, status: "paid" };
         }),
+      };
+    }
+
+    case "deleteInvoice": {
+      const { id } = action.payload;
+
+      if (id == null) return state;
+
+      return {
+        ...state,
+        invoices: state.invoices.filter((invoice) => invoice.id !== id),
       };
     }
 

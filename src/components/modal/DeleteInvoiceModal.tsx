@@ -1,6 +1,8 @@
 import { Heading } from "@/components/utilities/heading/Heading";
 import styles from "./Modal.module.scss";
 import { Button } from "@/components/utilities/button/Button";
+import { useInvoiceDispatch } from "@/context/useInvoiceContext";
+import { useNavigate } from "react-router";
 
 type DeleteInvoiceModalProps = {
   id: string;
@@ -8,6 +10,16 @@ type DeleteInvoiceModalProps = {
 };
 
 export function DeleteInvoiceModal({ id, onClose }: DeleteInvoiceModalProps) {
+  const dispatch = useInvoiceDispatch();
+
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    dispatch({ type: "deleteInvoice", payload: { id } });
+
+    navigate("/");
+  };
+
   return (
     <section
       className={styles.deleteInvoice}
@@ -24,7 +36,9 @@ export function DeleteInvoiceModal({ id, onClose }: DeleteInvoiceModalProps) {
         <Button variant="secondary" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="danger">Delete</Button>
+        <Button variant="danger" onClick={handleDelete}>
+          Delete
+        </Button>
       </div>
     </section>
   );
