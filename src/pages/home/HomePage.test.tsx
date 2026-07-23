@@ -1,9 +1,6 @@
 import { describe, expect, it } from "vitest";
-import {
-  createInvoice,
-  createDraftInvoice,
-} from "../../../test/invoiceFactory";
-import { renderRoute } from "../../../test/renderRoute";
+import { createInvoice, createDraftInvoice } from "@/test/invoiceFactory";
+import { renderRoute } from "@/test/RenderRoute";
 import { Homepage } from "./HomePage";
 import { screen } from "@testing-library/react";
 import { DetailsPage } from "@/pages/details/DetailsPage";

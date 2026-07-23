@@ -1,9 +1,9 @@
 import styles from "./StatusTag.module.scss";
-import type { FilterStatus } from "@/types/invoice";
+import type { DraftStatus, InvoiceStatus } from "@/types/invoice";
 import StatusIcon from "@/assets/svg/icon-status.svg?react";
 
 type StatusTagProps = {
-  status: FilterStatus;
+  status: InvoiceStatus | DraftStatus;
 };
 
 export function StatusTag({ status }: StatusTagProps) {

@@ -5,8 +5,8 @@ import {
 } from "react-router";
 import { render } from "@testing-library/react";
 import type { ReactNode } from "react";
-import type { InvoicesType } from "../src/types/invoice";
-import { InvoiceProvider } from "../src/context/InvoiceProvider";
+import type { Invoices } from "@/types/invoice";
+import { InvoiceProvider } from "@/context/Provider";
 
 type RenderRouteOptions = {
   routes: {
@@ -15,7 +15,7 @@ type RenderRouteOptions = {
     loader?: LoaderFunction;
   }[];
   initialEntries?: string[];
-  invoices: InvoicesType;
+  invoices: Invoices;
 };
 
 export function renderRoute({

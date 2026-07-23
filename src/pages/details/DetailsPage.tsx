@@ -1,6 +1,9 @@
 import styles from "./DetailsPage.module.scss";
 import { Button } from "@/components/utilities/button/Button";
-import { useInvoiceValue } from "@/context/useInvoiceContext";
+import {
+  useInvoiceDispatch,
+  useInvoiceValue,
+} from "@/context/useInvoiceContext";
 import { getInvoice } from "@/lib/getInvoice";
 import { NavLink, useParams } from "react-router";
 import ArrowIcon from "@/assets/svg/icon-arrow-left.svg?react";
@@ -9,14 +12,17 @@ import { DetailsContent } from "@/components/details-content/DetailsContent";
 import { NotFound } from "@/pages/not-found/NotFound";
 
 export function DetailsPage() {
+  const dispatch = useInvoiceDispatch();
+
   const { invoices } = useInvoiceValue();
 
   const { invoiceId } = useParams();
   if (invoiceId == null) return <NotFound />;
 
   const invoice = getInvoice(invoices, invoiceId);
-
   if (invoice == null) return <NotFound />;
+
+  const { id, status } = invoice;
 
   return (
     <div className={styles.pageLayout}>
@@ -31,7 +37,7 @@ export function DetailsPage() {
       {/* Status */}
       <div className={styles.statusContainer}>
         <p>Status</p>
-        <StatusTag status={invoice.status} />
+        <StatusTag status={status} />
       </div>
 
       {/* Details */}
@@ -41,7 +47,21 @@ export function DetailsPage() {
       <div className={styles.controlsContainer}>
         <Button variant="secondary">Edit</Button>
         <Button variant="danger">Delete</Button>
-        <Button variant="primary">Mark as Paid</Button>
+        {status === "pending" && (
+          <Button
+            variant="primary"
+            onClick={() =>
+              dispatch({
+                type: "markAsPaid",
+                payload: {
+                  id,
+                },
+              })
+            }
+          >
+            Mark as Paid
+          </Button>
+        )}
       </div>
     </div>
   );

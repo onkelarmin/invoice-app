@@ -12,7 +12,7 @@
           100% - (var(--pad-wrapper-start) + var(--pad-wrapper-end)),
           var(--size-wrapper-default)
         ) *
-        5 / 12
+        4 / 12
     )
     [center]
     calc(
@@ -20,7 +20,7 @@
           100% - (var(--pad-wrapper-start) + var(--pad-wrapper-end)),
           var(--size-wrapper-default)
         ) *
-        7 / 12
+        8 / 12
     )
     [content-end]
     minmax(var(--pad-wrapper-end), 1fr)
@@ -88,6 +88,7 @@
     justify-content: start;
     border-start-end-radius: revert;
     border-end-end-radius: revert;
+    padding-inline-end: 0;
   }
 
   .controlsContainer {

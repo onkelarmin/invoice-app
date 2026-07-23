@@ -1,6 +1,6 @@
-import { FILTER_STATUS } from "@/data/constants";
-import type { FilterStatus } from "@/types/invoice";
+import { INVOICE_STATUS } from "@/data/constants";
+import type { DraftStatus, InvoiceStatus } from "@/types/invoice";
 
-export function isStatus(value: string): value is FilterStatus {
-  return value in FILTER_STATUS;
+export function isStatus(value: string): value is InvoiceStatus | DraftStatus {
+  return value in INVOICE_STATUS;
 }

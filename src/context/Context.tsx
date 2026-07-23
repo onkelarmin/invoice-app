@@ -1,5 +1,5 @@
 import { createContext, type Dispatch } from "react";
-import type { Action, State } from "./InvoiceProvider";
+import type { Action, State } from "./Reducer";
 
 type ValueContext = State;
 type DispatchContext = Dispatch<Action>;
