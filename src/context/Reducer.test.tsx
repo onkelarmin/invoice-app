@@ -58,4 +58,41 @@ describe("Invoice Reducer", () => {
 
     expect(newState).toEqual(state);
   });
+
+  it("deletes the correct invoice", () => {
+    const invoice1 = createInvoice({
+      id: "ID0001",
+    });
+    const invoice2 = createInvoice({
+      id: "ID0002",
+    });
+
+    const state = { invoices: [invoice1, invoice2] };
+
+    const newState = reducer(state, {
+      type: "deleteInvoice",
+      payload: { id: invoice2.id },
+    });
+
+    expect(newState.invoices).toHaveLength(1);
+    expect(newState.invoices[0]).toEqual(invoice1);
+  });
+
+  it("returns the old state if 'deleteInvoice' is called with an invalid id", () => {
+    const invoice1 = createInvoice({
+      id: "ID0001",
+    });
+    const invoice2 = createInvoice({
+      id: "ID0002",
+    });
+
+    const state = { invoices: [invoice1, invoice2] };
+
+    const newState = reducer(state, {
+      type: "deleteInvoice",
+      payload: { id: "invalid-id" },
+    });
+
+    expect(newState).toEqual(state);
+  });
 });
