@@ -5,7 +5,7 @@ import { Heading } from "@/components/utilities/heading/Heading";
 import { formatDate } from "@/lib/formatDate";
 import { formatCurrency } from "@/lib/formatCurrency";
 import ArrowIcon from "@/assets/svg/icon-arrow-right.svg?react";
-import { StatusTag } from "@/components/StatusTag/StatusTag";
+import { StatusTag } from "@/components/status-tag/StatusTag";
 import { getTotalAmount } from "@/lib/getTotalAmount";
 
 type InvoiceListItemProps = {
