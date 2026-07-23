@@ -1,5 +1,5 @@
 import styles from "./BaseLayout.module.scss";
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, ScrollRestoration } from "react-router";
 import Logo from "@/assets/svg/logo.svg?react";
 import ProfilePicture from "@/assets/image/image-avatar.jpg";
 import { ThemeSwitch } from "@/components/theme-switch/ThemeSwitch";
@@ -32,6 +32,8 @@ export function BaseLayout({ children }: BaseLayoutProps) {
       <main className={styles.main}>
         {children == null ? <Outlet /> : children}
       </main>
+
+      <ScrollRestoration />
     </div>
   );
 }

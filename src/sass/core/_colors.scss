@@ -83,6 +83,12 @@ $background-colors: (
       dark: "neutral-900",
     ),
   ),
+  overlay: (
+    default: (
+      light: "neutral-1000" 0.5,
+      dark: "neutral-1000" 0.5,
+    ),
+  ),
   status: (
     paid: (
       light: "green-500" 0.05,

@@ -4,6 +4,8 @@ import { renderRoute } from "@/test/RenderRoute";
 import { DetailsPage } from "./DetailsPage";
 import { screen, within } from "@testing-library/react";
 import { formatDate } from "@/lib/formatDate";
+import userEvent from "@testing-library/user-event";
+import { Homepage } from "@/pages/home/HomePage";
 
 describe("Invoice details page", () => {
   it("renders the correct invoice information", () => {
@@ -124,5 +126,97 @@ describe("Invoice details page", () => {
       screen.getByRole("heading", { name: "Page not found" }),
     ).toBeInTheDocument();
     expect(screen.getByText("404")).toBeInTheDocument();
+  });
+
+  it("opens the confirmation dialog when clicking the delete button", async () => {
+    const user = userEvent.setup();
+
+    const invoice1 = createInvoice({
+      id: "ID0001",
+    });
+
+    renderRoute({
+      routes: [{ path: "/invoices/:invoiceId", element: <DetailsPage /> }],
+      initialEntries: [`/invoices/${invoice1.id}`],
+      invoices: [invoice1],
+    });
+
+    await user.click(screen.getByRole("button", { name: "Delete" }));
+
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Confirm Deletion" }),
+    ).toBeInTheDocument();
+  });
+
+  it("deletes the correct invoice and navigates to the homepage", async () => {
+    const user = userEvent.setup();
+
+    const invoice1 = createInvoice({ id: "ID0001" });
+    const invoice2 = createInvoice({ id: "ID0002" });
+    const invoice3 = createInvoice({ id: "ID0003" });
+
+    renderRoute({
+      routes: [
+        { path: "/", element: <Homepage /> },
+        { path: "/invoices/:invoiceId", element: <DetailsPage /> },
+      ],
+      initialEntries: [`/invoices/${invoice2.id}`],
+      invoices: [invoice1, invoice2, invoice3],
+    });
+
+    await user.click(screen.getByRole("button", { name: "Delete" }));
+
+    const dialog = screen.getByRole("dialog");
+
+    await user.click(within(dialog).getByRole("button", { name: "Delete" }));
+
+    expect(
+      screen.getByRole("heading", { name: "Invoices" }),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("total-count")).toHaveTextContent(
+      "There are 2 total invoices",
+    );
+
+    expect(
+      screen.getByRole("heading", { name: new RegExp(invoice1.id) }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: new RegExp(invoice3.id) }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.queryByRole("heading", { name: new RegExp(invoice2.id) }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("lets the user cancel the deleting process in the confirmation modal", async () => {
+    const user = userEvent.setup();
+
+    const invoice1 = createInvoice({
+      id: "ID0001",
+      status: "pending",
+      description: "description-1",
+    });
+
+    renderRoute({
+      routes: [{ path: "/invoices/:invoiceId", element: <DetailsPage /> }],
+      initialEntries: [`/invoices/${invoice1.id}`],
+      invoices: [invoice1],
+    });
+
+    await user.click(screen.getByRole("button", { name: "Delete" }));
+
+    const dialog = screen.getByRole("dialog");
+
+    await user.click(within(dialog).getByRole("button", { name: "Cancel" }));
+
+    expect(
+      screen.getByRole("heading", { name: new RegExp(invoice1.id) }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Status").nextElementSibling).toHaveTextContent(
+      invoice1.status,
+    );
+    expect(screen.getByText(invoice1.description)).toBeInTheDocument();
   });
 });

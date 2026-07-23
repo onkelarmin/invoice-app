@@ -1,0 +1,54 @@
+.modal {
+  max-inline-size: 30rem;
+  place-self: center;
+  background-color: var(--bg-container-default);
+  border: none;
+  border-radius: var(--br-md);
+  box-shadow: var(--bs-default);
+  margin-inline-start: var(--pad-wrapper-start);
+  margin-inline-end: var(--pad-wrapper-end);
+  opacity: 0;
+  transition:
+    opacity var(--trans-fast-out),
+    overlay var(--trans-fast-out) allow-discrete,
+    display var(--trans-fast-out) allow-discrete;
+
+  &::backdrop {
+    background-color: var(--bg-overlay-default);
+    opacity: 0;
+    transition:
+      opacity var(--trans-fast-out),
+      overlay var(--trans-fast-out) allow-discrete,
+      display var(--trans-fast-out) allow-discrete;
+  }
+
+  &[open] {
+    opacity: 1;
+
+    &::backdrop {
+      opacity: 1;
+    }
+
+    @starting-style {
+      opacity: 0;
+
+      &::backdrop {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.deleteInvoice {
+  padding: var(--space-2xl);
+
+  .buttonContainer {
+    inline-size: fit-content;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-block-start: var(--space-md);
+    margin-inline-start: auto;
+  }
+}
