@@ -68,12 +68,6 @@ body,
   }
 }
 
-.main {
-  min-inline-size: 0;
-  min-block-size: 0;
-  overflow-y: auto;
-}
-
 @include mq(large) {
   .baseLayout {
     grid-template-rows: minmax(0, 1fr);
@@ -84,7 +78,7 @@ body,
   .header {
     grid-template-columns: auto;
     grid-template-rows: auto 1fr auto;
-    border-top-right-radius: var(--br-xl);
+    border-radius: 0 var(--br-xl) var(--br-xl) 0;
 
     .themeContainer {
       justify-self: center;

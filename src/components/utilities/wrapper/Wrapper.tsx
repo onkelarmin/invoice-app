@@ -6,9 +6,9 @@ type WrapperProps = {
   children: ReactNode;
 } & ComponentPropsWithoutRef<"div">;
 
-export function Wrapper({ width, children }: WrapperProps) {
+export function Wrapper({ width, children, ...rest }: WrapperProps) {
   return (
-    <div className={styles.wrapper} data-width={width}>
+    <div className={styles.wrapper} data-width={width} {...rest}>
       {children}
     </div>
   );

@@ -1,0 +1,67 @@
+@use "@/sass/miscellaneous/_media-queries" as *;
+
+.layout {
+  block-size: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow-y: hidden;
+
+  .content {
+    overflow-y: auto;
+  }
+}
+
+.form {
+  padding-inline: var(--space-3xl);
+  margin-block-start: var(--space-2xl);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-xl);
+  padding-inline: var(--space-3xl);
+  padding-block-start: var(--space-3xl);
+
+  .backButton {
+    .arrowIcon {
+      width: var(--size-icon-arrow-left);
+      color: var(--fg-icon-default);
+      margin-inline-end: var(--space-lg);
+    }
+  }
+
+  .hash {
+    color: var(--fg-text-hash);
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding-inline: var(--space-3xl);
+  padding-block: var(--space-xl);
+  box-shadow: var(--bs-form-footer);
+
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+}
+
+@include mq(medium) {
+  .header {
+    .backButton {
+      display: none;
+    }
+  }
+
+  .footer {
+    justify-content: space-between;
+    border-radius: 0 var(--br-xl) var(--br-xl) 0;
+  }
+}

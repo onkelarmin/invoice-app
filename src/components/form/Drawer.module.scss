@@ -1,0 +1,49 @@
+@use "@/sass/miscellaneous/_media-queries" as *;
+
+.drawer {
+  display: none;
+  position: absolute;
+  inline-size: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bg-container-form);
+  translate: -100%;
+  transition:
+    translate var(--trans-default-out-sensitive),
+    display var(--trans-default-out) allow-discrete;
+
+  &[data-open="true"] {
+    display: grid;
+    translate: 0;
+
+    @starting-style {
+      translate: -100%;
+    }
+  }
+
+  @include mq(medium) {
+    inline-size: min(38.5rem, 100%);
+    border-radius: 0 var(--br-xl) var(--br-xl) 0;
+  }
+}
+
+.backdrop {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg-overlay-default);
+  opacity: 0;
+  transition:
+    display var(--trans-fast-out) allow-discrete,
+    opacity var(--trans-fast-out);
+
+  &[data-open="true"] {
+    display: block;
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}

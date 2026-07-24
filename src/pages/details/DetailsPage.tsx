@@ -13,6 +13,7 @@ import { NotFound } from "@/pages/not-found/NotFound";
 import { Modal } from "@/components/modal/Modal";
 import { useState } from "react";
 import { DeleteInvoiceModal } from "@/components/modal/DeleteInvoiceModal";
+import { Main } from "@/pages/main-wrapper/MainWrapper";
 
 export function DetailsPage() {
   const { invoices } = useInvoiceValue();
@@ -29,11 +30,11 @@ export function DetailsPage() {
   const { id, status } = invoice;
 
   return (
-    <>
+    <Main>
       <div className={styles.pageLayout}>
         {/* Back Link */}
         <div className={styles.backLinkContainer}>
-          <Button As={NavLink} to="/" variant="ghost" classes="mar-block">
+          <Button As={NavLink} to="/" variant="ghost">
             <ArrowIcon className={styles.arrowIcon} aria-hidden="true" />
             Go back
           </Button>
@@ -81,6 +82,6 @@ export function DetailsPage() {
           onClose={() => setIsDeleteModalOpen(false)}
         />
       </Modal>
-    </>
+    </Main>
   );
 }

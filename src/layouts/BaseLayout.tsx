@@ -29,9 +29,7 @@ export function BaseLayout({ children }: BaseLayoutProps) {
         </div>
       </header>
 
-      <main className={styles.main}>
-        {children == null ? <Outlet /> : children}
-      </main>
+      {children == null ? <Outlet /> : children}
 
       <ScrollRestoration />
     </div>

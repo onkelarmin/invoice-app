@@ -16,6 +16,10 @@ $box-shadow-colors: (
     light: "neutral-500" 0.25,
     dark: "neutral-1000" 0.25,
   ),
+  form-footer: (
+    light: "neutral-950" 0.2,
+    dark: "neutral-950" 0.8,
+  ),
 );
 
 $box-shadows-offsets: (
@@ -23,10 +27,12 @@ $box-shadows-offsets: (
   default: 0px 10px 10px -10px,
   header: 0px 0px 20px 10px,
   filter-list: 0px 10px 20px 0px,
+  form-footer: 0px -30px 40px 10px,
 );
 
 $box-shadows: (
   default: (var(--box-shadow-default)),
   header: (var(--box-shadow-header)),
   filter-list: (var(--box-shadow-filter-list)),
+  form-footer: (var(--box-shadow-form-footer)),
 );

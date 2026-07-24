@@ -1,0 +1,10 @@
+.main {
+  min-inline-size: 0;
+  min-block-size: 0;
+  overflow-y: auto;
+  position: relative;
+
+  &[data-disable-scroll="true"] {
+    overflow-y: hidden;
+  }
+}

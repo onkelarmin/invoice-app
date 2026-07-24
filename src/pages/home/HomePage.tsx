@@ -9,11 +9,15 @@ import type { FilterSet } from "@/types/invoice";
 import { isStatus } from "@/lib/isStatus";
 import { Button } from "@/components/utilities/button/Button";
 import PlusIcon from "@/assets/svg/icon-plus.svg?react";
+import { Drawer } from "@/components/form/Drawer";
+import { InvoiceForm } from "@/components/form/InvoiceForm";
+import { Main } from "@/pages/main-wrapper/MainWrapper";
 
 export function Homepage() {
   const { invoices } = useInvoiceValue();
 
   const [filters, setFilters] = useState<FilterSet>(new Set([]));
+  const [isNewInvoiceFormOpen, setIsNewInvoiceFormOpen] = useState(false);
 
   const handleFilterChange = (value: string, isChecked: boolean) => {
     if (!isStatus(value)) return;
@@ -39,47 +43,57 @@ export function Homepage() {
         });
 
   return (
-    <Wrapper>
-      <div className={styles.pageLayout}>
-        <div className={styles.headerLayout}>
-          <div>
-            <Heading tag="h1" size="h1">
-              Invoices
-            </Heading>
-            <p
-              className="font-body-variant mar-block-start-2xs"
-              data-testid="total-count"
-            >
-              {visibleInvoices.length === 0 ? (
-                "No invoices"
-              ) : (
-                <>
-                  <span className="hide-mobile">
-                    There {visibleInvoices.length === 1 ? "is" : "are"}
-                  </span>{" "}
-                  {visibleInvoices.length}{" "}
-                  <span className="hide-mobile">total</span>{" "}
-                  {visibleInvoices.length === 1 ? "invoice" : "invoices"}
-                </>
-              )}
-            </p>
+    <Main disableScroll={isNewInvoiceFormOpen}>
+      <Wrapper inert={isNewInvoiceFormOpen ? true : undefined}>
+        <div className={styles.pageLayout}>
+          <div className={styles.headerLayout}>
+            <div>
+              <Heading tag="h1" size="h1">
+                Invoices
+              </Heading>
+              <p
+                className="font-body-variant mar-block-start-2xs"
+                data-testid="total-count"
+              >
+                {visibleInvoices.length === 0 ? (
+                  "No invoices"
+                ) : (
+                  <>
+                    <span className="hide-mobile">
+                      There {visibleInvoices.length === 1 ? "is" : "are"}
+                    </span>{" "}
+                    {visibleInvoices.length}{" "}
+                    <span className="hide-mobile">total</span>{" "}
+                    {visibleInvoices.length === 1 ? "invoice" : "invoices"}
+                  </>
+                )}
+              </p>
+            </div>
+
+            <div className={styles.controls}>
+              <InvoiceFilter values={filters} onChange={handleFilterChange} />
+              <Button
+                variant="new-invoice"
+                onClick={() => setIsNewInvoiceFormOpen(true)}
+              >
+                <div className={styles.iconContainer}>
+                  <PlusIcon className={styles.plusIcon} aria-hidden="true" />
+                </div>
+                <span className={styles.text}>
+                  New<span className="hide-mobile"> Invoice</span>
+                </span>
+              </Button>
+            </div>
           </div>
 
-          <div className={styles.controls}>
-            <InvoiceFilter values={filters} onChange={handleFilterChange} />
-            <Button variant="new-invoice">
-              <div className={styles.iconContainer}>
-                <PlusIcon className={styles.plusIcon} aria-hidden="true" />
-              </div>
-              <span className={styles.text}>
-                New<span className="hide-mobile"> Invoice</span>
-              </span>
-            </Button>
-          </div>
+          <InvoiceList invoices={visibleInvoices} />
         </div>
+      </Wrapper>
 
-        <InvoiceList invoices={visibleInvoices} />
-      </div>
-    </Wrapper>
+      <Drawer isOpen={isNewInvoiceFormOpen}>
+        <InvoiceForm type={{ action: "create" }} />
+        {/* <InvoiceForm type={{ action: "edit", invoice: invoices[0] }} /> */}
+      </Drawer>
+    </Main>
   );
 }
